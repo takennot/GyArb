@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="dark-mode.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="load.js"></script>
+	<title>ListMaker</title>
+</head>
+<body>
+<div class=".container-fluid">
+	<div class="custom-control custom-switch d-flex justify-content-center">
+		<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
+		<label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+	</div>
+	<script src="dark-mode-switch.min.js"></script>
+	<div class="d-flex justify-content-center">
+		<form id="goCenterPls">
+  			<div class="form-group row">
+    			<label for="inputBudget" class="col-sm-2 col-form-label"></label>
+    				<div class="col-sm-10">
+      					<input type="text" class="form-control" id="inputBudget" placeholder="Budget">
+    				</div>
+  			</div>
+  			<div class="form-group row">
+    			<div class="col-sm-10 offset-sm-2">
+      				<button type="submit" class="btn btn-primary btn-block">Make me a list!</button>
+    			</div>
+  			</div>
+  			<div class="progress">
+  				<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%" id="barPlsWork"></div>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>
