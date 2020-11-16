@@ -12,11 +12,21 @@
 	<title>ListMaker</title>
 </head>
 <body>
-<div class=".container-fluid">
-	<div class="custom-control custom-switch d-flex justify-content-center">
-		<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-		<label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-	</div>
+<div class="container-fluid">
+	<div class="dropdown show">  <!-- Dropdown menu -->
+		<a href="#" class="btn btn-dark dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i class="fas fa-caret-square-down rotate"></i></a>  <!-- Dropdown icon -->
+		<div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">  <!-- List of things in dropdown -->
+			<a class="dropdown-item" href="https://weloventig.se" target="_blank">Inspiration</a>  <!-- Link to weloventig.se -->
+    	 	<a class="dropdown-item" href="https://sms.schoolsoft.se/nti/samlLogin.jsp" target="_blank">Schoolhard</a>  <!-- Link to schoolsoft -->
+    	 	<a class="dropdown-item" href="https://classroom.google.com/u/0/" target="_blank">ClassStreet</a>  <!-- Link to Classroom -->
+    	 	<a class="dropdown-item" href="https://web.skola24.se/timetable/timetable-viewer/it-gymnasiet.skola24.se/IT-Gymnasiet%20S%C3%B6dert%C3%B6rn/" target="_blank">Schedule</a>  <!-- Link to that shit website -->
+    	 	<a class="dropdown-item" href="https://skolmaten.se/nti-gymnasiet-sodertorn/" target="_blank">School Food</a>  <!-- Link to school food -->
+    	 	<div class="custom-control custom-switch d-flex">
+    	 		<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
+    	 		<label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+    	 	</div>
+      	</div>  <!-- Dropdown list end -->
+	</div>  <!-- Dropdown menu end -->
 	<script src="js/dark-mode-switch.min.js"></script>
 	<div class="d-flex justify-content-center">
 		<form id="goCenterPls">
@@ -33,6 +43,7 @@
   			</div>
 		</form>
 	</div>
+	<script src="js/main.js"></script>
 </div>
 </body>
 </html>
