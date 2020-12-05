@@ -5,9 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
 	<script src="js/bootstrap.min.js"></script>
 
 	<title>Home page</title>
@@ -22,8 +23,8 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 		      	<li class="nav-item dropdown">
-		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a> <!-- FIX THIS FUCKING DROPDWN -->
-		        	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a> <!-- FIX THIS FUCKING DROPDWN -->
+		        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 		          		<a class="dropdown-item" href="index.html"> Home </a>
 		          		<a class="dropdown-item" href="html/articles.html"> Articles </a>
 		          		<a class="dropdown-item" href="html/FAQ.html"> FAQ </a>
@@ -42,15 +43,18 @@
 		    </form>
 		</div>
 	</nav>
-	<div class="container-fluid bg-light">
+
+	<div class="container-fluid bg-light" id="divHomePage">
 
 		<h1 class="text-center header pt-5">Computer Part Picker</h1>
 
 		<div class="container card mt-5">
-		  	<div class="card-body">
-		    	<h5 class="card-title">Special title treatment</h5>
-		    	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-		    	<a href="html/getcomputer.html" class="btn btn-primary">Get a computer</a>
+		  	<div class="card-body text-center">
+		    	<h5 class="card-title">Information about the site</h5>
+		    	<p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+		    	<div class="text-center">
+            		<a href="html/getcomputer.html" class="btn btn-purple px-5 py-2">Get a computer</a>
+          		</div>
 		  	</div>
 		</div>
 	</div>

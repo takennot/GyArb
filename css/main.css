@@ -18,3 +18,12 @@
     -webkit-transform:rotate(90deg);
     transform:rotate(90deg);
 }
+
+#divHomePage{
+	height: 90vh;
+}
+
+.btn-purple{
+	background-color: #965bcd;
+	color: white;
+}
