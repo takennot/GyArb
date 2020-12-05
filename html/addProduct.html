@@ -10,7 +10,151 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<h1 class="text-center">Radio style choose</h1>
+		<h1>Which part do you want to add? (For later debug: to which table in database should form send in. Example, choose CPU and CPU form, that will send data to CPU table in database, will appear hiding everything else)</h1>
+		<!-- Choose which forms to hide and show -->
+		<div class="container-fluid">
+			<div class="row my-3">
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="CPU">CPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="GPU">GPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="PSU">PSU</button>
+				</div>
+			</div>
+
+			<div class="row my-3">
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="CPU2">CPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="GPU2">GPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="PSU2">PSU</button>
+				</div>
+			</div>
+
+			<div class="row my-3">
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="CPU3">CPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="GPU3">GPU</button>
+				</div>
+
+				<div class="col-md-4 py-3">
+					<button type="button" class="btn btn-primary btn-lg btn-block" id="PSU3">PSU</button>
+				</div>
+			</div>
+		</div>
+<!-- CPU form -->
+		<form id="CPU_Form">
+  			<fieldset class="form-group">
+    			<div class="row">
+    				<legend class="col-form-label col-sm-2 pt-0">Manufacturer: </legend>
+    				<div class="col-sm-3">
+    					<select class="custom-select mr-sm-2" id="Manufacturer_Select">
+    						<option selected value="none">None</option>
+    						<option value="AMD">AMD</option>
+    						<option value="Intel">Intel</option>
+    					</select>
+    				</div>
+    			</div>
+  			</fieldset>
+
+  			<fieldset>
+  				<div class="row">
+  					<legend class="col-form-label col-sm-2 pt-0">Brand & modifier</legend>
+  					<div class="col-sm-3">
+  						<select class="custom-select mr-sm-2" id="Brand_Select">
+       						<option selected value="none">None</option>
+        					<option value="Ryzen 3">Ryzen 3</option>
+        					<option value="Ryzen 5">Ryzen 5</option>
+        					<option value="Ryzen 7">Ryzen 7</option>
+        					<option value="Ryzen 9">Ryzen 9</option>
+        					<option value="i3">i3</option>
+        					<option value="i5">i5</option>
+        					<option value="i7">i7</option>
+        					<option value="i9">i9</option>
+      					</select>
+  					</div>
+  				</div>
+  			</fieldset>
+  			<br>
+  			<fieldset>
+  				<div class="row">
+  					<legend class="col-form-label col-sm-2 pt-0">Name (SKU)</legend>
+  					<div class="col-sm-3">
+  						<select class="custom-select mr-sm-2" id="SKU_Select">
+       						<option selected value="none">None</option>
+        					<option value="1200">1200</option>
+        					<option value="1300X">1300X</option>
+        					<option value="1600X">1600X</option>
+      					</select>
+  					</div>
+  				</div>
+  			</fieldset>
+		</form>
+
+		<form id="GPU_Form">
+  <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
+    </div>
+  </div>
+</form>
+
+<form id="PSU_Form">
+  <div class="form-row">
+    <div class="col-7">
+      <input type="text" class="form-control" placeholder="City">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="State">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Zip">
+    </div>
+  </div>
+</form>
+
 	</div>
+	<script>
+		$(function(){
+			$("#CPU").click(function(){
+				$("#CPU_Form").show();
+				$("#GPU_Form").hide();
+				$("#PSU_Form").hide();
+			})
+
+			$("#GPU").click(function(){
+				$("#CPU_Form").hide();
+				$("#GPU_Form").show();
+				$("#PSU_Form").hide()
+			})
+		})
+	</script>
+	<script src="../js/Dynamic_Dropdown.js"></script>
 </body>
 </html>
