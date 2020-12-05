@@ -1,0 +1,8 @@
+<option value="1200">1200</option>
+<option value="1300X">1300X</option>
+<option value="2200G">2200G</option>
+<option value="2300X">2300X</option>
+<option value="3100">3100</option>
+<option value="3200G">3200G</option>
+<option value="3300X">3300X</option>
+<option value="4300G">4300G</option>
