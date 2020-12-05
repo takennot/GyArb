@@ -1,1 +1,5 @@
 <option value="3900X">3900X</option>
+<option value="3900XT">3900XT</option>
+<option value="3950X">3950X</option>
+<option value="5900X">5900X</option>
+<option value="5950X">5950X</option>
