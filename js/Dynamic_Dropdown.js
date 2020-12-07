@@ -1,7 +1,7 @@
-$("#Manufacturer_Select").change(function() {
-   $("#Brand_Select").load("textdata/" + $(this).val() + ".txt");
-});
+var $Manufacturer_Select = $( '#Manufacturer_Select' ),
+    $Brand_Select = $( '#Brand_Select' ),
+    $options = $Brand_Select.find( 'option' );
 
-$("#Brand_Select").change(function() {
-   $("#SKU_Select").load("textdata/" + $(this).val() + ".txt");
-});
+$Manufacturer_Select.on('change', function() {
+    $Brand_Select.html($options.filter('[value="' + this.value + '"]'));
+}).trigger('change'); 
