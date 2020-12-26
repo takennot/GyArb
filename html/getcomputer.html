@@ -6,45 +6,123 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
+
 	<title>getComputer</title>
 </head>
 <body>
-<div class="container-fluid">
-	<div class="dropdown show">  <!-- Dropdown menu -->
-		<a href="#" class="btn btn-dark dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"><i class="fas fa-caret-square-down rotate"></i></a>  <!-- Dropdown icon -->
-		<div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">  <!-- List of things in dropdown -->
-			<a class="dropdown-item" href="https://weloventig.se" target="_blank">Inspiration</a>  <!-- Link to weloventig.se -->
-    	 	<a class="dropdown-item" href="https://sms.schoolsoft.se/nti/samlLogin.jsp" target="_blank">Schoolhard</a>  <!-- Link to schoolsoft -->
-    	 	<a class="dropdown-item" href="https://classroom.google.com/u/0/" target="_blank">ClassStreet</a>  <!-- Link to Classroom -->
-    	 	<a class="dropdown-item" href="https://web.skola24.se/timetable/timetable-viewer/it-gymnasiet.skola24.se/IT-Gymnasiet%20S%C3%B6dert%C3%B6rn/" target="_blank">Schedule</a>  <!-- Link to that shit website -->
-    	 	<a class="dropdown-item" href="https://skolmaten.se/nti-gymnasiet-sodertorn/" target="_blank">School Food</a>  <!-- Link to school food -->
-    	 	<div class="custom-control custom-switch d-flex">
-    	 		<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-    	 		<label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-    	 	</div>
-      	</div>  <!-- Dropdown list end -->
-	</div>  <!-- Dropdown menu end -->
-	<script src="js/dark-mode-switch.min.js"></script>
-	<div class="d-flex justify-content-center">
-		<form id="goCenterPls">
-  			<div class="form-group row">
-    			<label for="inputBudget" class="col-sm-2 col-form-label"></label>
-    				<div class="col-sm-10">
-      					<input type="text" class="form-control" id="inputBudget" placeholder="Budget">
-    				</div>
-  			</div>
-  			<div class="form-group row">
-    			<div class="col-sm-10 offset-sm-2">
-      				<button type="submit" class="btn btn-primary btn-block" id="make">Make me a list!</button>
-    			</div>
-  			</div>
-		</form>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+		<a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      	<li class="nav-item dropdown">
+		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a> <!-- FIX THIS FUCKING DROPDWN -->
+		        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          		<a class="dropdown-item" href="../index.html"> Home </a>
+		          		<a class="dropdown-item" href="articles.html"> Articles </a>
+		          		<a class="dropdown-item" href="FAQ.html"> FAQ </a>
+		          		<div class="dropdown-divider"></div>
+		          		<a class="dropdown-item" href="aboutContact.html"> Contact/About us </a>
+		        	</div>
+		      	</li>
+		      	<a href="html/getcomputer.html"><button class="btn btn-outline-primary py-2" type="button">Get computer</button></a>
+		      	<li class="nav-item">
+        			<a class="nav-link" href="html/aboutContact.html">About</a>
+      			</li>
+      			<li class="nav-item mt-2 ml-2">
+      				<div class="custom-control custom-switch d-flex">
+	    	 			<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
+	    	 			<label class="custom-control-label text-light" for="darkSwitch">Dark Mode</label>
+	    			</div>
+	    		</li>
+		    </ul>
+		    <form class="form-inline my-2 my-lg-0">
+		      	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		      	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		</div>
+	</nav>
+
+	<!-- main page -->
+	<div class="container-fluid bg-light" id="divPageGetComputer">		  		
+		<h3 class="text-center header pt-5">Get computer</h3>
+
+		<div class="container-fluid" id="divMiddleGetComputer">
+			<div class="container card mt-5">
+				<div class="card-body py-5 px-5">
+				    <form>
+				    	<div class="form-group row">
+		    				<div class="col-sm-10">
+		      					<input type="number" class="form-control" id="inputBudget" placeholder="Budget">
+		      				</div>
+				    	</div>
+				    	<h5>Preferences</h5>
+				    	<div class="form-group row">
+								<div class="col-sm-10">
+								    <div class="form-check">
+								        <input class="form-check-input" type="checkbox" id="gridCheck1">
+								        <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+								    </div>
+								    <div class="form-check">
+								        <input class="form-check-input" type="checkbox" id="gridCheck1">
+								       	<label class="form-check-label" for="gridCheck1">Example checkbox</label>
+								    </div>
+								    <div class="form-check">
+								        <input class="form-check-input" type="checkbox" id="gridCheck1">
+								        <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+								    </div>
+								</div>
+							</div>
+						</div>
+
+						<br>
+
+						<h5>Main use</h5>
+
+						<fieldset class="form-group">
+						    <div class="row">
+						    	<legend class="col-form-label col-sm-2 pt-0">Types</legend>
+						      	<div class="col-sm-10">
+						        	<div class="form-check">
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice1" value="option1" checked>
+						          		<label class="form-check-label" for="choice1">First choice</label>
+						        	</div>
+						        	<div class="form-check">
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice2" value="option2">
+						          		<label class="form-check-label" for="choice2">Second choice</label>
+						        	</div>
+						        	<div class="form-check">
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice3" value="option3">
+						          		<label class="form-check-label" for="choice2">Third choice</label>
+						        	</div>
+						        </div>
+						    </div>
+						</fieldset>
+				    </form>
+
+				    <!-- button -->
+				    <div class="d-flex justify-content-center pb-5">
+		            	<a href="html/getcomputer.html" class="btn btn-primary px-5 py-2 m-size">Get a computer</a>
+		        	</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<!-- footer -->
+	<footer class="page-footer text-center bg-primary text-white position-fixed fixed-bottom">
+        <p class="my-4 py-1"> NTI Gymnasiet Södertörn | Gymnasiearbete | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
+    </footer>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="../js/dark-mode-switch.min.js"></script>
-</div>
+
 </body>
 </html>

@@ -19,11 +19,21 @@
     transform:rotate(90deg);
 }
 
-#divHomePage{
+#divHomePage, #divPageGetComputer{
 	height: 90vh;
 }
 
 .btn-purple{
 	background-color: #965bcd;
 	color: white;
+}
+
+/*getcomputer.html*/
+
+#divMiddleGetComputer{
+	width: 50%;
+}
+
+.m-size{
+	width: 20vw;
 }
