@@ -51,63 +51,76 @@
 	<div class="container-fluid bg-light" id="divPageGetComputer">		  		
 		<h3 class="text-center header pt-5">Get computer</h3>
 
-		<div class="container-fluid" id="divMiddleGetComputer">
-			<div class="container card mt-5">
-				<div class="card-body py-5 px-5">
-				    <form>
-				    	<div class="form-group row">
-		    				<div class="col-sm-10">
+		<div class="container-fluid col-md-8" id="divMiddleGetComputer">
+			<div class="container card mt-4">
+				<div class="card-body">
+				    <form class="my-5 mx-2">
+				    	<!-- Budget input box -->
+				    	<div class="form-group row d-flex justify-content-center mb-4">
+		    				<div class="col-sm-6">
 		      					<input type="number" class="form-control" id="inputBudget" placeholder="Budget">
 		      				</div>
 				    	</div>
+				    	<div class="alert alert-info" role="alert">
+						  	Keep in mind to insert the budget that excludes the money used for keyboard, mouse, monitor/screen. This is only for the computer itself.
+						</div>
+
+				    	<div class="col-md-8 mx-4">
 				    	<h5>Preferences</h5>
 				    	<div class="form-group row">
-								<div class="col-sm-10">
-								    <div class="form-check">
-								        <input class="form-check-input" type="checkbox" id="gridCheck1">
-								        <label class="form-check-label" for="gridCheck1">Example checkbox</label>
-								    </div>
-								    <div class="form-check">
-								        <input class="form-check-input" type="checkbox" id="gridCheck1">
-								       	<label class="form-check-label" for="gridCheck1">Example checkbox</label>
-								    </div>
-								    <div class="form-check">
-								        <input class="form-check-input" type="checkbox" id="gridCheck1">
-								        <label class="form-check-label" for="gridCheck1">Example checkbox</label>
-								    </div>
+							<div class="col-sm-10">
+								<div class="form-check mb-2">
+								    <input class="form-check-input" type="checkbox" id="checkboxRGB">
+								    <label class="form-check-label" for="gridCheck1">Include RGB parts</label>
+								</div>
+								<div class="form-check">
+								    <input class="form-check-input" type="checkbox" id="gridCheck1" checked>
+								    <label class="form-check-label" for="gridCheck1">Include AMD GPU</label>
+								</div>
+								<div class="form-check mb-2">
+								    <input class="form-check-input" type="checkbox" id="gridCheck1" checked>
+								    <label class="form-check-label" for="gridCheck1">Include Nvidia GPU</label>
+								</div>
+								<div class="form-check">
+								    <input class="form-check-input" type="checkbox" id="gridCheck1" checked>
+								    <label class="form-check-label" for="gridCheck1">Include Intel CPU</label>
+								</div>
+								<div class="form-check">
+								    <input class="form-check-input" type="checkbox" id="gridCheck1" checked>
+								    <label class="form-check-label" for="gridCheck1">Include AMD CPU</label>
 								</div>
 							</div>
 						</div>
 
 						<br>
 
-						<h5>Main use</h5>
-
 						<fieldset class="form-group">
+							<h5>Main use</h5>
 						    <div class="row">
-						    	<legend class="col-form-label col-sm-2 pt-0">Types</legend>
 						      	<div class="col-sm-10">
 						        	<div class="form-check">
-						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice1" value="option1" checked>
-						          		<label class="form-check-label" for="choice1">First choice</label>
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="checkboxGaming" value="option1" checked>
+						          		<label class="form-check-label" for="choice1">Gaming</label>
 						        	</div>
 						        	<div class="form-check">
-						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice2" value="option2">
-						          		<label class="form-check-label" for="choice2">Second choice</label>
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="checkboxOfficeHome" value="option2">
+						          		<label class="form-check-label" for="choice2">Office / Home computer</label>
 						        	</div>
 						        	<div class="form-check">
-						          		<input class="form-check-input" type="radio" name="gridRadios" id="choice3" value="option3">
-						          		<label class="form-check-label" for="choice2">Third choice</label>
+						          		<input class="form-check-input" type="radio" name="gridRadios" id="checkboxWorkRender" value="option3">
+						          		<label class="form-check-label" for="choice2">Working/Rendering</label>
 						        	</div>
 						        </div>
 						    </div>
 						</fieldset>
-				    </form>
+						</div>
 
-				    <!-- button -->
-				    <div class="d-flex justify-content-center pb-5">
-		            	<a href="html/getcomputer.html" class="btn btn-primary px-5 py-2 m-size">Get a computer</a>
-		        	</div>
+						<!-- button -->
+
+					    <div class="d-flex justify-content-center mt-5">
+			            	<button type="button" class="btn btn-primary m-size d-flex justify-content-center" onclick="getComputer()">Get a computer</button>
+			        	</div>
+				    </form>
 				</div>
 			</div>
 		</div>
@@ -121,7 +134,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/main.js"></script>
 	<script src="../js/dark-mode-switch.min.js"></script>
 
 </body>
