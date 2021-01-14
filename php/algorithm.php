@@ -19,7 +19,7 @@
 
     // gets user inputs for budget and gaming
 
-    $budget = 20000; //minimum 7200
+    $budget = 17000; //minimum 7200
 
     $purpose = 'gaming';
 
