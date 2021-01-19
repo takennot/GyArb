@@ -1,9 +1,0 @@
-<option value="9900">9900</option>
-<option value="9900K">9900K</option>
-<option value="9900KF">9900KF</option>
-<option value="9900KS">9900KS</option>
-<option value="10850K">10850K</option>
-<option value="10900">10900</option>
-<option value="10900F">10900F</option>
-<option value="10900K">10900K</option>
-<option value="10900KF">10900KF</option>

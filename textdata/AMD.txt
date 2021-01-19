@@ -1,4 +1,0 @@
-<option value="Ryzen 3">Ryzen 3</option>
-<option value="Ryzen 5">Ryzen 5</option>
-<option value="Ryzen 7">Ryzen 7</option>
-<option value="Ryzen 9">Ryzen 9</option>

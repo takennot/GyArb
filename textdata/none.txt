@@ -1,1 +1,0 @@
-<option selected value="none">Please choose from above</option>

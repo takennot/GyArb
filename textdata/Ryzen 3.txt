@@ -1,8 +1,0 @@
-<option value="2200G">2200G</option> DONE
-<option value="2300X">2300X</option> DONE
-<option value="3100">3100</option> DONE
-<option value="3200G">3200G</option> DONE
-<option value="3300X">3300X</option> DONE
-<option value="4300G">4300G</option>
-
-INSERT INTO `CPU`(`manufacturer`, `brand_and_modifier`, `name`, `socket`, `price`, `performance`, `cooler`, `has_igpu`, `link`) VALUES ("AMD","Ryzen 3",[value-3],[value-4],[value-5],"low",[value-7],[value-8],[value-9])
