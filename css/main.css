@@ -33,3 +33,9 @@
 .m-size{
 	width: 30vw;
 }
+
+/* articles.html */
+#droppingArticle {
+	position: fixed;
+	z-index: 1;
+}
