@@ -95,15 +95,15 @@
                             <div class="row">
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gaming" id="checkboxGaming" value="option1" checked>
+                                        <input class="form-check-input" type="radio" name="purpose" id="checkboxGaming" value="gaming" checked>
                                         <label class="form-check-label" for="checkboxGaming">Gaming</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="officeHome" id="checkboxOfficeHome" value="option2">
+                                        <input class="form-check-input" type="radio" name="purpose" id="checkboxOfficeHome" value="office">
                                         <label class="form-check-label" for="checkboxOfficeHome">Office / Home computer</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="workRender" id="checkboxWorkRender" value="option3">
+                                        <input class="form-check-input" type="radio" name="purpose" id="checkboxWorkRender" value="work">
                                         <label class="form-check-label" for="checkboxWorkRender">Working/Rendering</label>
                                     </div>
                                 </div>
