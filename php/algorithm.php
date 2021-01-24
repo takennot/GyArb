@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,7 +113,7 @@
 
                         <!-- button -->
                         <div class="d-flex justify-content-center mt-5">
-                            <input class="mt-1 btn btn-primary m-size d-flex justify-content-center px-5 py-2" type="submit" name="Submit" value="Get your computer">
+                            <input class="mt-1 btn btn-primary m-size d-flex justify-content-center px-5 py-2" id="buttonGetComputer" type="submit" name="Submit" value="Get your computer">
                         </div>
 
                     </form>
@@ -151,44 +151,44 @@
                     if($budget <= 10000){
                         $performance = 'low';
                     }
-                    else if($budget > 10000 && $budget < 15000){
+                    else if($budget > 10000 && $budget < 16000){
                         $performance = 'mid';
                     }
-                    else if($budget >= 15000){
+                    else if($budget >= 16000){ //45389
                         $performance = 'high';
                     }
 
                     //dont forget to take away money for a case (pre set standard case set by us)
 
                     //percentage of budgets depend on what performance the computer is. Different priorities.
-                    if($performance == 'low'){
+                    if($performance == 'low'){ //total: 97,9%
 
-                        $cpuBudget = $budget * 0.355;
-                        $gpuBudget = $budget * 0.206;
-                        $moboBudget = $budget * 0.15; //fix later
-                        $psuBudget = $budget * 0.1; //fix later
-                        $RAMBudget = $budget * 0.1; //fix later
-                        $storageBudget = $budget * 0.15; //fix later
-
-                    }
-                    else if($performance == 'mid'){
-
-                        $cpuBudget = $budget * 0.30;
-                        $gpuBudget = $budget * 0.324;
-                        $moboBudget = $budget * 0.15; //fix later
-                        $psuBudget = $budget * 0.1; //fix later
-                        $RAMBudget = $budget * 0.1; //fix later
-                        $storageBudget = $budget * 0.15; //fix later
+                        $cpuBudget = $budget * 0.355; //35,5%
+                        $gpuBudget = $budget * 0.206; //20,6%
+                        $moboBudget = $budget * 0.143; //14,3%
+                        $psuBudget = $budget * 0.162; //16,2%
+                        $RAMBudget = $budget * 0.053; //5,3%
+                        $storageBudget = $budget * 0.6; //6%
 
                     }
-                    else if($performance == 'high'){
+                    else if($performance == 'mid'){ //total: 94,6%
 
-                        $cpuBudget = $budget * 0.20;
-                        $gpuBudget = $budget * 0.35;
-                        $moboBudget = $budget * 0.15; //fix later
-                        $psuBudget = $budget * 0.1; //fix later
-                        $RAMBudget = $budget * 0.1; //fix later
-                        $storageBudget = $budget * 0.15; //fix later
+                        $cpuBudget = $budget * 0.281; //28,1%
+                        $gpuBudget = $budget * 0.304; //30,4%
+                        $moboBudget = $budget * 0.12; //12%
+                        $psuBudget = $budget * 0.137; //13,7%
+                        $RAMBudget = $budget * 0.05; //5%
+                        $storageBudget = $budget * 0.054; //5,4%
+
+                    }
+                    else if($performance == 'high'){ //total: 96.2%
+
+                        $cpuBudget = $budget * 0.20; //20%
+                        $gpuBudget = $budget * 0.35; //35%
+                        $moboBudget = $budget * 0.14; //14%
+                        $psuBudget = $budget * 0.14; //14%
+                        $RAMBudget = $budget * 0.037; //3,7%
+                        $storageBudget = $budget * 0.095; //9,5%
 
                     }
                     else{
@@ -229,7 +229,7 @@
                 }
 
                 else{
-                    echo '<script>alert("Minimum for budget is 7200kr")</script>';
+                    echo '<script>alert("Minimum for budget is 7200kr")</script>'; //fix so it doesnt reload and change to a popup, not alert (anoying)
                 }
             }
 
@@ -466,5 +466,11 @@
     <script src="../js/main.js"></script>
     <script src="../js/dark-mode-switch.min.js"></script>
     
+    <!-- <script>
+        //make midDiv dissapear when button pressed
+        $("#buttonGetComputer").click(function(){
+            $("#divMiddleGetComputer").hide();
+        }); 
+    </script> -->
 </body>
 </html>
