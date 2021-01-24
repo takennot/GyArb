@@ -120,7 +120,6 @@
                 </div>
             </div>
         </div>
-        
         <?php
             if(isset($_POST['Submit'])){
                 if($_POST['budget'] >=7200){
@@ -136,7 +135,7 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
                     else{
-                        echo "database connected! :D <br>";
+                        echo "<p class='text-center'>Connections to databse is successful</p><br>"; 
                     }
 
                     // gets data from database
@@ -181,13 +180,13 @@
                         $storageBudget = $budget * 0.054; //5,4%
 
                     }
-                    else if($performance == 'high'){ //total: 96.2%
+                    else if($performance == 'high'){ //total: 100%
 
                         $cpuBudget = $budget * 0.20; //20%
                         $gpuBudget = $budget * 0.35; //35%
                         $moboBudget = $budget * 0.14; //14%
                         $psuBudget = $budget * 0.14; //14%
-                        $RAMBudget = $budget * 0.037; //3,7%
+                        $RAMBudget = $budget * 0.075; //7,5%
                         $storageBudget = $budget * 0.095; //9,5%
 
                     }
@@ -196,13 +195,12 @@
                     }
 
                     echo "
-                    <div class='alert alert-success' role='alert'>
-                        Budget: ".$budget." Purpose: ".$purpose." Performance: ".$performance." <br>
-                    </div>
-                    ";
+                    <div class='alert alert-success text-center' role='alert'>
+                    	<h1>Your current budget is: ".$budget." kr</h1><br>".
+                    "</div>";
 
                     echo "
-                        <div class='row py-3'>
+                        <div class='row py-3 mx-auto' style='width: 75rem;' id='resultano'>
                     ";
 
                     //CPU
@@ -291,7 +289,7 @@
                             if($i == $rand){
                                 echo "
                                     <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
+                                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
                                             <div class='card-header'>CPU: </div>
                                             <div class='card-body'>
                                                 <a href='".$row['link']."'>
@@ -375,7 +373,7 @@
 
                                 echo "
                                     <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
+                                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
                                             <div class='card-header'>GPU: </div>
                                             <div class='card-body'>
                                                 <a href='".$row['link']."'>
@@ -460,11 +458,11 @@
 
                                 echo "
                                     <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
+                                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
                                             <div class='card-header'>Motherboard: </div>
                                             <div class='card-body'>
                                                 <a href='".$row['link']."'>
-                                                    <h2>".$row['company']. " " .$row['name']. " " . $row['socket']. " " . $row['form_factor']."</h2>
+                                                    <h2>".$row['company']. " " .$row['name']."</h2>
                                                 </a>
                                                 <h5>". $row['price']. "kr</h5>
                                             </div>
@@ -482,48 +480,213 @@
             }
         
             function getStorage($conn, $storageBudget, $purpose, $performance){
-                echo "
+				//hämtar från databasen
+                if($performance == 'low'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '250' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size <= '500'";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size BETWEEN '499' AND '1001' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                $fittingAmount = 0; //the amount of parts that fit the requirements
+                if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) {
+        
+                        if($row["price"] <= $storageBudget){
+                            $fittingAmount++;           
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+        
+                //nästa del
+        
+                if($performance == 'low'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '250' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size <= '500'";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size BETWEEN '499' AND '1001' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                if (mysqli_num_rows($result) > 0) {
+        
+                    //gets the random part out of the fitted ones
+                    $rand = mt_rand(1, $fittingAmount);
+                    $i = 0;
+        
+                    while($row = mysqli_fetch_assoc($result)) {
+                        if($row["price"] <= $storageBudget){
+                            $i++;
+                            if($i == $rand){
+
+                                echo "
                                     <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
-                                            <div class='card-header'>Storage: </div>
+                                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
+                                            <div class='card-header'>SSD: </div>
                                             <div class='card-body'>
-                                                <a href=''>
-                                                    <h2>namn och skit</h2>
+                                                <a href='".$row['link']."'>
+                                                    <h2>".$row['name']. " " .$row['size'].'GB'."</h2>
                                                 </a>
-                                                <h5>xxxx kr</h5>
+                                                <h5>". $row['price']. "kr</h5>
                                             </div>
                                         </div>
-                                    </div>";
+                                    </div>
+                                ";
+                            }
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+                echo "<br><hr><br>";
             }
         
             function getPSU($conn, $psuBudget, $purpose, $performance){
-                echo "
+				//hämtar från databasen
+                if($performance == 'low'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt <= '550' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt BETWEEN '550' AND '650' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt >= '750' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                $fittingAmount = 0; //the amount of parts that fit the requirements
+                if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) {
+        
+                        if($row["price"] <= $psuBudget){
+                            $fittingAmount++;           
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+        
+                //nästa del
+        
+                if($performance == 'low'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt <= '550' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt BETWEEN '550' AND '650' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt >= '750' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                if (mysqli_num_rows($result) > 0) {
+        
+                    //gets the random part out of the fitted ones
+                    $rand = mt_rand(1, $fittingAmount);
+                    $i = 0;
+        
+                    while($row = mysqli_fetch_assoc($result)) {
+                        if($row["price"] <= $psuBudget){
+                            $i++;
+                            if($i == $rand){
+
+                                echo "
                                     <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
+                                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
                                             <div class='card-header'>PSU: </div>
                                             <div class='card-body'>
-                                                <a href=''>
-                                                    <h2>namn och skit</h2>
+                                                <a href='".$row['link']."'>
+                                                    <h2>".$row['name']. " " .$row['watt'].'W'."</h2>
                                                 </a>
-                                                <h5>xxxx kr</h5>
+                                                <h5>". $row['price']. "kr</h5>
                                             </div>
                                         </div>
-                                    </div>";
+                                    </div>
+                                ";
+                            }
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+                echo "<br><hr><br>";
             }
             
             function getRAM($conn, $RAMBudget, $purpose, $performance){
-                echo "
-                                    <div class='col-sm mt-3'>
-                                        <div class='card shadow' style='width: 20rem; height: 13rem;'>
-                                            <div class='card-header'>RAM: </div>
-                                            <div class='card-body'>
-                                                <a href=''>
-                                                    <h2>namn och skit</h2>
-                                                </a>
-                                                <h5>xxxx kr</h5>
-                                            </div>
+				//hämtar från databasen
+            	if($RAMBudget >= 529 && $RAMBudget < 749){
+            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '529' ";
+                    $result = mysqli_query($conn, $sql);
+            	}
+            	else if($RAMBudget >= 749 && $RAMBudget < 1667){
+            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '749' ";
+                    $result = mysqli_query($conn, $sql);
+            	}
+            	else if($RAMBudget >= 1667){
+            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '1667' ";
+                    $result = mysqli_query($conn, $sql);
+            	}
+            	else{
+
+            	}
+        
+                if (mysqli_num_rows($result) > 0) {
+        
+                    while($row = mysqli_fetch_assoc($result)) {
+                            echo "
+                                <div class='col-sm mt-3'>
+                                    <div class='card shadow' style='width: 20rem; height: 15rem;'>
+                                        <div class='card-header'>RAM: </div>
+                                        <div class='card-body'>
+                                            <a href='".$row['link']."'>
+                                                <h2>".$row['name']. " " .$row['size'].'GB'."</h2>
+                                            </a>
+                                            <h5>". $row['price']. "kr</h5>
                                         </div>
-                                    </div>";
+                                    </div>
+                                </div>
+                            ";
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+                echo "<br><hr><br>";
             }
         ?>
 
@@ -539,11 +702,12 @@
     <script src="../js/main.js"></script>
     <script src="../js/dark-mode-switch.min.js"></script>
     
-    <!-- <script>
-        //make midDiv dissapear when button pressed
-        $("#buttonGetComputer").click(function(){
-            $("#divMiddleGetComputer").hide();
-        }); 
-    </script> -->
+    <script>
+    $(function() {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#resultano").offset().top
+    }, 2000);
+})
+    </script>
 </body>
 </html>
