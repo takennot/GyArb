@@ -206,13 +206,13 @@
                     ";
 
                     //CPU
-                    getCPU($conn, $cpuBudget, $purpose, $performance);
+                    $cpuSocket = getCPU($conn, $cpuBudget, $purpose, $performance);
 
                     //GPU
                     getGPU($conn, $gpuBudget, $purpose, $performance);
 
                     //mobo
-                    getMOBO($conn, $moboBudget, $purpose, $performance);
+                    getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket);
 
                     //Storage
                     getStorage($conn, $storageBudget, $purpose, $performance);
@@ -237,15 +237,15 @@
 
                 //hämtar från databasen
                 if($performance == 'low'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'low' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'low' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if ($performance == 'mid'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'mid' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'mid' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if($performance == 'high'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'high' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'high' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else{}
@@ -266,15 +266,15 @@
                 //______________________________________________________________
         
                 if($performance == 'low'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'low' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'low' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if ($performance == 'mid'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'mid' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'mid' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if($performance == 'high'){
-                    $sql = "SELECT manufacturer, brand_and_modifier, name, price, link FROM CPU WHERE performance = 'high' ";
+                    $sql = "SELECT manufacturer, brand_and_modifier, socket, name, price, link FROM CPU WHERE performance = 'high' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else{ }
@@ -300,13 +300,16 @@
                                                 <h5>". $row['price']. "kr</h5>
                                             </div>
                                         </div>
-                                    </div>";
+                                    </div>
+                                ";
+                                return $row['socket'];
                             }
                         }
                     }
                 } 
                 else {
                     echo "0 results";
+                    return "";
                 }
             }
         
@@ -393,19 +396,89 @@
                 echo "<br><hr><br>";
             }
         
-            function getMOBO($conn, $moboBudget, $purpose, $performance){
-                echo "
+            function getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket){
+
+                //hämtar från databasen
+                if($performance == 'low'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                $fittingAmount = 0; //the amount of parts that fit the requirements
+                if (mysqli_num_rows($result) > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) {
+        
+                        if($row["price"] <= $moboBudget){
+                            $fittingAmount++;           
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+        
+                //nästa del
+        
+                if($performance == 'low'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if ($performance == 'mid'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else if($performance == 'high'){
+                    $sql = "SELECT which_cpu, company, name, socket, form_factor, chipset, max_ram_speed, max_ram_size, price, performance, link FROM Mobo WHERE socket = '$cpuSocket' ";
+                    $result = mysqli_query($conn, $sql);
+                }
+                else{
+        
+                }
+        
+                if (mysqli_num_rows($result) > 0) {
+        
+                    //gets the random part out of the fitted ones
+                    $rand = mt_rand(1, $fittingAmount);
+                    $i = 0;
+        
+                    while($row = mysqli_fetch_assoc($result)) {
+                        if($row["price"] <= $moboBudget){
+                            $i++;
+                            if($i == $rand){
+
+                                echo "
                                     <div class='col-sm mt-3'>
                                         <div class='card shadow' style='width: 20rem; height: 13rem;'>
                                             <div class='card-header'>Motherboard: </div>
                                             <div class='card-body'>
-                                                <a href=''>
-                                                    <h2>namn och skit</h2>
+                                                <a href='".$row['link']."'>
+                                                    <h2>".$row['company']. " " .$row['name']. " " . $row['socket']. " " . $row['form_factor']."</h2>
                                                 </a>
-                                                <h5>xxxx kr</h5>
+                                                <h5>". $row['price']. "kr</h5>
                                             </div>
                                         </div>
-                                    </div>";
+                                    </div>
+                                ";
+                            }
+                        }
+                    }
+                } 
+                else {
+                    echo "0 results";
+                }
+                echo "<br><hr><br>";
             }
         
             function getStorage($conn, $storageBudget, $purpose, $performance){
