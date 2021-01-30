@@ -1,9 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FAQ</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
+	<title>Contact/About us</title>
 </head>
 <body>
-	<h1>FAQ</h1>
+	<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a> <!-- FIX THIS FUCKING DROPDWN -->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../index.html"> Home </a>
+                        <a class="dropdown-item" href="articles.html"> Articles </a>
+                        <a class="dropdown-item" href="FAQ.html"> FAQ </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="aboutContact.html"> Contact/About us </a>
+                    </div>
+                </li>
+                <a href="../html/getcomputer.php"><button class="btn btn-outline-primary py-2" type="button">Get computer</button></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="../html/aboutContact.html">About</a>
+                </li>
+                <li class="nav-item mt-2 ml-2">
+                    <div class="custom-control custom-switch d-flex">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
+                        <label class="custom-control-label text-light" for="darkSwitch">Dark Mode</label>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <!-- mainpage -->
+    <div class="container-fluid bg-light pb-5">
+    	<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+			    <h1 class="display-3">FAQ</h1>
+			    <p class="lead">Frequently Asked Questions</p>
+
+			</div>
+		</div>
+		<div class="container">
+  			<div class="row">
+  				<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">Why wont the computer start?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+
+							<h5 class="my-1">The whole computer or a specific part or component doesn't turn on: </h5>
+							<small class="text-dark">Nothing turnes on or the pc is not responding/reacting, some of the parts is getting power and showing activity, while other ones are being completely powerless (for example some fans spinning and some don't), or a component is not turning on (for example, if provided lights on a component are not shining, "beeping" occurs but there is no image on the display, etc.</small>
+						    <ol class="ml-3">
+						    	<li>The computer/sertain part/component is probably not getting power. Check if the PSU switch is on, or any problems with the outlet.</li>
+						    	<li>Check if every cable is connected and seated properly. A sertain cable or part could also be damaged.</li>
+						    	<li>There could be a software problem, where it is installed incorectly or has got bios that are not supported.</li>
+						    </ol>
+						</li>
+					</ul>
+				</div>
+    			<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">How should i proceed if my hands/fingers are too big to reach/grab/handle a part of the computer in the process of building it?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+						    <p class="mb-1">Use tools that will allow you to manage that part, such as tweezers. Alternatively, you could ask for a help from someone with smaller fingers.</p>
+						    <a href="getcomputer.php">
+						    	<small class="text-dark">addition idk</small>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+    </div>
+    <!--footer -->
+	<div class="text-center bg-dark text-white">
+        <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
+    </div>
+
+	<script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-mode-switch.min.js"></script>
 </body>
 </html>
