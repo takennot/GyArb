@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
 
     <title>getComputer</title>
 </head>
@@ -20,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a> <!-- FIX THIS FUCKING DROPDWN -->
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../index.html"> Home </a>
                         <a class="dropdown-item" href="articles.html"> Articles </a>
@@ -32,12 +31,6 @@
                 <a href="../html/getcomputer.php"><button class="btn btn-outline-primary py-2" type="button">Get computer</button></a>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/aboutContact.html">About</a>
-                </li>
-                <li class="nav-item mt-2 ml-2">
-                    <div class="custom-control custom-switch d-flex">
-                        <input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-                        <label class="custom-control-label text-light" for="darkSwitch">Dark Mode</label>
-                    </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -61,6 +54,7 @@
                                 <input type="number" class="form-control" id="inputBudget" name="budget" placeholder="Budget" required>
                             </div>
                         </div>
+                        <div id="divAlertMinimum"></div>
                         <div class="alert alert-info" role="alert">
                             Keep in mind to insert the budget that excludes the money used for keyboard, mouse, monitor/screen. This is only for the computer itself.
                         </div>
@@ -113,7 +107,7 @@
 
                         <!-- button -->
                         <div class="d-flex justify-content-center mt-5">
-                            <input class="mt-1 btn btn-primary m-size d-flex justify-content-center px-5 py-2" id="buttonGetComputer" type="submit" name="Submit" value="Get your computer">
+                            <input class="mt-1 btn btn-primary d-flex justify-content-center px-5 py-2" id="buttonGetComputer" type="submit" name="Submit" value="Get your computer">
                         </div>
 
                     </form>
@@ -122,7 +116,7 @@
         </div>
         <?php
             if(isset($_POST['Submit'])){
-                if($_POST['budget'] >=7200){
+                if($_POST['budget'] >= 7700){
                     $servername = "46.59.18.164:3306"; #46.59.18.164 #localhost
                     $username = "ruski";
                     $password = "hund";
@@ -135,13 +129,14 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
                     else{
-                        echo "<p class='text-center'>Connections to databse is successful</p><br>"; 
+                        //echo "<p class='text-center'>Connections to databse is successful</p><br>"; 
                     }
 
                     // gets data from database
                     // gets user inputs for budget and gaming
 
-                    $budget = $_POST['budget']; //minimum 7200
+                    $budget = $_POST['budget']; //minimum 7700
+                    $totalBudget = $budget;
 
                     $purpose = 'gaming';
 
@@ -149,25 +144,29 @@
                     $performance = '';
                     if($budget <= 10000){
                         $performance = 'low';
+
+                        $budget = $budget - 449;
                     }
                     else if($budget > 10000 && $budget < 16000){
                         $performance = 'mid';
+                        $budget = $budget - 549;
                     }
                     else if($budget >= 16000){ //45389
                         $performance = 'high';
+                        $budget = $budget - 1688;
                     }
 
                     //dont forget to take away money for a case (pre set standard case set by us)
 
                     //percentage of budgets depend on what performance the computer is. Different priorities.
-                    if($performance == 'low'){ //total: 97,9%
+                    if($performance == 'low'){ //total: 100%
 
                         $cpuBudget = $budget * 0.355; //35,5%
                         $gpuBudget = $budget * 0.206; //20,6%
                         $moboBudget = $budget * 0.143; //14,3%
                         $psuBudget = $budget * 0.162; //16,2%
-                        $RAMBudget = $budget * 0.053; //5,3%
-                        $storageBudget = $budget * 0.6; //6%
+                        $RAMBudget = $budget * 0.074; //7,4%
+                        $storageBudget = $budget * 0.06; //6%
 
                     }
                     else if($performance == 'mid'){ //total: 94,6%
@@ -196,12 +195,15 @@
 
                     echo "
                     <div class='alert alert-success text-center' role='alert'>
-                    	<h1>Your current budget is: ".$budget." kr</h1><br>".
+                        <h2>Your current budget is: ".$totalBudget." kr</h2>".
                     "</div>";
 
                     echo "
                         <div class='row py-3 mx-auto' style='width: 75rem;' id='resultano'>
                     ";
+
+                    //Case
+                    getCase($performance);
 
                     //CPU
                     $cpuSocket = getCPU($conn, $cpuBudget, $purpose, $performance);
@@ -225,10 +227,57 @@
                         </div>
                     ";
                 }
-
                 else{
-                    echo '<script>alert("Minimum for budget is 7200kr")</script>'; //fix so it doesnt reload and change to a popup, not alert (anoying)
+                    //minimum 7700 - FIX FFS
+
+                    echo "<script> 
+                            document.getElementById('divAlertMinimum').innerHTML += '<div class='alert alert-warning text-center' role='alert'> Please put in a budget over 7700kr </div>'; 
+                        </script>"
+                    ;
+                    echo "<div class='alert alert-warning text-center' role='alert'> Please put in a budget over 7700kr </div>";
                 }
+            }
+
+            function getCase($performance){
+                $caseCost = 0;
+                $link = "";
+                $name = "";
+                $extraInfo = "";
+
+                if ($performance == 'low'){
+                    $caseCost = 449;
+                    $link = "https://www.komplett.se/product/1014312/datorutrustning/datorkomponenter/chassibarebone/midi-tower/deepcool-d-shield-v2";
+                    $name = "Deepcool D-Shield V2";
+                    $extraInfo = "Middle Tower. mITX, mATX, ATX. Fans: 1x120mm back.";
+                }
+                else if ($performance == 'mid'){
+                    $caseCost = 549;
+                    $link = "https://cdon.se/hemelektronik/deepcool-matrexx-55-v3-black-p55309820";
+                    $name = "Deepcool Matrexx 55 V3 - Black";
+                    $extraInfo = "Middle Tower. E-ATX, ATX, Micro-ATX, Mini-ITX. Tempered Glass";
+                }
+                else if ($performance == 'high'){
+                    $caseCost = 1688;
+                    $link = "https://www.komplett.se/product/1132476/datorutrustning/datorkomponenter/chassibarebone/midi-tower/nzxt-h710-vit";
+                    $name = "NZXT H710 Vit";
+                    $extraInfo = "Middle Tower. ATX, mITX, mATX. Fans: 3x 120mm front, 1x 140mm back. Tempered Glass";
+                }
+
+                echo "
+                    <div class='col-sm mt-3'>
+                        <div class='card shadow' style='width: 20rem; height: 15rem;'>
+                            <div class='card-header'>Case: </div>
+                            <div class='card-body'>
+                                <a href='".$link."'>
+                                    <h2>".$name."</h2>
+                                    <small class='text-muted'>".$extraInfo."</small>
+                                </a>
+                                <br>
+                                <h5>".$caseCost."kr</h5>
+                            </div>
+                        </div>
+                    </div>
+                ";
             }
 
             function getCPU($conn, $cpuBudget, $purpose, $performance){
@@ -337,6 +386,9 @@
         
                         if($row["price"] <= $gpuBudget){
                             $fittingAmount++;           
+                        }
+                        else{
+                            // echo "<br> 0 gpu's found.";
                         }
                     }
                 } 
@@ -480,7 +532,7 @@
             }
         
             function getStorage($conn, $storageBudget, $purpose, $performance){
-				//hämtar från databasen
+                //hämtar från databasen
                 if($performance == 'low'){
                     $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '250' ";
                     $result = mysqli_query($conn, $sql);
@@ -564,7 +616,7 @@
             }
         
             function getPSU($conn, $psuBudget, $purpose, $performance){
-				//hämtar från databasen
+                //hämtar från databasen
                 if($performance == 'low'){
                     $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt <= '550' ";
                     $result = mysqli_query($conn, $sql);
@@ -648,22 +700,22 @@
             }
             
             function getRAM($conn, $RAMBudget, $purpose, $performance){
-				//hämtar från databasen
-            	if($RAMBudget >= 529 && $RAMBudget < 749){
-            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '529' ";
+                //hämtar från databasen
+                if($RAMBudget >= 529 && $RAMBudget < 749){
+                    $sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '529' ";
                     $result = mysqli_query($conn, $sql);
-            	}
-            	else if($RAMBudget >= 749 && $RAMBudget < 1667){
-            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '749' ";
+                }
+                else if($RAMBudget >= 749 && $RAMBudget < 1667){
+                    $sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '749' ";
                     $result = mysqli_query($conn, $sql);
-            	}
-            	else if($RAMBudget >= 1667){
-            		$sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '1667' ";
+                }
+                else if($RAMBudget >= 1667){
+                    $sql = "SELECT name, size, speed, modules, price, link FROM RAM WHERE price = '1667' ";
                     $result = mysqli_query($conn, $sql);
-            	}
-            	else{
+                }
+                else{
 
-            	}
+                }
         
                 if (mysqli_num_rows($result) > 0) {
         
@@ -691,16 +743,15 @@
         ?>
 
     </div>
-    <!-- footer -->
-    <div class="text-center bg-primary text-white py-1">
-        <p class="my-3 py-1"> NTI Gymnasiet Södertörn | Gymnasiearbete | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
+    <!--footer -->
+    <div class="text-center bg-dark text-white">
+        <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
     </div>
 
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/dark-mode-switch.min.js"></script>
     
     <script>
     $(function() {
