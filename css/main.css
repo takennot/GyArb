@@ -7,6 +7,11 @@
 	margin-top: 45vh;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .rotate{
     -moz-transition: all 2s linear;
     -webkit-transition: all 2s linear;
@@ -17,10 +22,6 @@
     -moz-transform:rotate(90deg);
     -webkit-transform:rotate(90deg);
     transform:rotate(90deg);
-}
-
-#divHomePage, #divPageGetComputer{
-	height: 105vh;
 }
 
 .btn-purple{

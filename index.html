@@ -8,12 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/dark-mode.css">
 	<link rel="stylesheet" href="css/main.css">
 
 
 </head>
-<body>
+<body class="bg-light">
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
 		<a class="navbar-brand" href="index.html">Computer-Part Picker</a>
@@ -37,12 +36,6 @@
 		      	<li class="nav-item">
         			<a class="nav-link" href="html/aboutContact.html">About</a>
       			</li>
-      			<li class="nav-item mt-2 ml-2">
-      				<div class="custom-control custom-switch d-flex">
-	    	 			<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-	    	 			<label class="custom-control-label text-light" for="darkSwitch">Dark Mode</label>
-	    			</div>
-	    		</li>
 		    </ul>
 		    <form class="form-inline my-2 my-lg-0">
 		      	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -52,7 +45,7 @@
 	</nav>
 
 	<!-- Main page -->
-	<div class="container-fluid bg-light" id="divHomePage">
+	<div class="container-fluid bg-light" style="padding-bottom: 15vh"; >
 
 		<h1 class="text-center header pt-5">Computer Part Picker</h1>
 
@@ -60,6 +53,9 @@
 		  	<div class="card-body text-center">
 		    	<h5 class="card-title">Information about the site</h5>
 		    	<p class="card-text">This website was created as a proof of concept. The concept is that it is possible to build a website (or an algorithm, to be specific) that will pick computer parts that will be compatible and relevant. It is not meant to be precise, because it will take a lot of time to refine the algorithm's work. Remember, it is just a proof-of-concept after all. In current state the algorithm's work could be defined as "more stable than unstable".</p>
+		    	<div class="alert alert-info" role="alert">
+                    Thanks to <a href="https://github.com/coliff">Christian "coliff" Oliff</a> for making the dark mode switch
+                </div>
 		    	<div class="text-center">
             		<a href="html/getcomputer.php" class="btn btn-primary px-5 py-2">Get a computer</a>
           		</div>
@@ -68,7 +64,7 @@
 	</div>
 
 	<!--footer -->
-	<div class="text-center bg-dark text-white" style="position: relative; bottom: 0px;">
+	<div class="text-center bg-dark text-white" style="position: fixed; bottom: 0; width: 100vw;">
         <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
     </div>
     
@@ -76,6 +72,5 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/dark-mode-switch.min.js"></script>
 </body>
 </html>
