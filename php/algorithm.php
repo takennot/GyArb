@@ -8,7 +8,7 @@
 
     <title>getComputer</title>
 </head>
-<body>
+<body  class="bg-light">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
@@ -51,12 +51,15 @@
                         <!-- Budget input box -->
                         <div class="form-group row d-flex justify-content-center mb-4">
                             <div class="col-sm-6">
-                                <input type="number" class="form-control" id="inputBudget" name="budget" placeholder="Budget" required>
+                                <input type="number" class="form-control" id="inputBudget" name="budget" placeholder="Budget in sek" required>
                             </div>
                         </div>
                         <div id="divAlertMinimum"></div>
                         <div class="alert alert-info" role="alert">
                             Keep in mind to insert the budget that excludes the money used for keyboard, mouse, monitor/screen. This is only for the computer itself.
+                        </div>
+                        <div class="alert alert-warning" role="alert">
+                            The Preference and Main use inputs doesn't currently work and doesnt affect the end result!
                         </div>
 
                         <div class="col-md-8 mx-4">
@@ -116,125 +119,149 @@
         </div>
         <?php
             if(isset($_POST['Submit'])){
-                if($_POST['budget'] >= 7700){
-                    $servername = "46.59.18.164:3306"; #46.59.18.164 #localhost
-                    $username = "ruski";
-                    $password = "hund";
-                    $dbname = "computerparts";
+                if($_POST['budget'] < 46000)
+                {
+                    if($_POST['budget'] >= 7700){
+                        $servername = "46.59.18.164:3306"; #46.59.18.164 #localhost
+                        $username = "ruski";
+                        $password = "hund";
+                        $dbname = "computerparts";
 
-                    // Create connection
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    // Check connection
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        else{
+                            //echo "<p class='text-center'>Connections to databse is successful</p><br>"; 
+                        }
+
+                        // gets data from database
+                        // gets user inputs for budget and gaming
+
+                        $budget = $_POST['budget']; //minimum 7700
+                        $totalBudget = $budget;
+
+                        $purpose = 'gaming';
+
+                        //sets the performance range based on budget
+                        $performance = '';
+                        if($budget <= 10000){
+                            $performance = 'low';
+
+                            $budget = $budget - 449;
+                        }
+                        else if($budget > 10000 && $budget < 16000){
+                            $performance = 'mid';
+                            $budget = $budget - 549;
+                        }
+                        else if($budget >= 16000){ //45389
+                            $performance = 'high';
+                            $budget = $budget - 1688;
+                        }
+
+                        //dont forget to take away money for a case (pre set standard case set by us)
+
+                        //percentage of budgets depend on what performance the computer is. Different priorities.
+                        if($performance == 'low'){ //total: 100%
+
+                            $cpuBudget = $budget * 0.355; //35,5%
+                            $gpuBudget = $budget * 0.206; //20,6%
+                            $moboBudget = $budget * 0.143; //14,3%
+                            $psuBudget = $budget * 0.162; //16,2%
+                            $RAMBudget = $budget * 0.074; //7,4%
+                            $storageBudget = $budget * 0.06; //6%
+
+                        }
+                        else if($performance == 'mid'){ //total: 95,2%
+
+                            $cpuBudget = $budget * 0.281; //28,1%
+                            $gpuBudget = $budget * 0.304; //30,4%
+                            $moboBudget = $budget * 0.12; //12%
+                            $psuBudget = $budget * 0.137; //13,7%
+                            $RAMBudget = $budget * 0.056; //5,6%
+                            $storageBudget = $budget * 0.054; //5,4%
+
+                        }
+                        else if($performance == 'high'){ //total: 100%
+
+                            $cpuBudget = $budget * 0.20; //20%
+                            $gpuBudget = $budget * 0.35; //35%
+                            $moboBudget = $budget * 0.14; //14%
+                            $psuBudget = $budget * 0.14; //14%
+                            $RAMBudget = $budget * 0.075; //7,5%
+                            $storageBudget = $budget * 0.095; //9,5%
+
+                        }
+                        else{
+                            echo "ERROR with setting budget for each part!";
+                        }
+
+                        echo "
+                        <div class='alert alert-success text-center' role='alert'>
+                            <h2>Your current budget is: ".$totalBudget." kr</h2>".
+                        "</div>";
+
+                        echo "
+                            <div class='row py-3 mx-auto' style='width: 75rem;' id='resultano'>
+                        ";
+
+                        $range = 0.95;
+                        $rangeCPU = 0.74;
+                        $rangeGPU = 0.81;
+                        $rangeStorage = 0.7;
+                        $rangeMobo = 0.7;
+                        $rangePSU = 0.5;
+
+                        if($totalBudget > 25000){
+                            $range = 0;
+                            $rangeCPU = 0;
+                            $rangeGPU = 0;
+                            $rangeStorage = 0;
+                            $rangeMobo = 0;
+                            $rangePSU = 0;
+                        }
+
+                        $total = 0;
+
+                        //Case
+                        getCase($performance);
+                        //CPU
+                        $cpuSocket = getCPU($conn, $cpuBudget, $purpose, $performance, $rangeCPU);
+
+                        //GPU
+                        getGPU($conn, $gpuBudget, $purpose, $performance, $rangeGPU);
+
+                        //mobo
+                        getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket, $rangeMobo);
+
+                        //Storage
+                        getStorage($conn, $storageBudget, $purpose, $performance, $rangeStorage);
+
+                        //PSU
+                        getPSU($conn, $psuBudget, $purpose, $performance, $rangePSU);
+
+                        //RAM
+                        getRAM($conn, $RAMBudget, $purpose, $performance);
+
+                        echo "
+                            </div>
+                        ";
+
+                        echo "
+                        <div class='alert alert-success text-center' role='alert' style='margin-bottom: 5rem;'>
+                            <h2>The total budget used is: ".$total." kr</h2>".
+                        "</div>";
                     }
                     else{
-                        //echo "<p class='text-center'>Connections to databse is successful</p><br>"; 
+                        //minimum 7700
+                        echo "<div class='alert alert-warning text-center' role='alert'> Please put in a budget over 7700kr </div>";
                     }
-
-                    // gets data from database
-                    // gets user inputs for budget and gaming
-
-                    $budget = $_POST['budget']; //minimum 7700
-                    $totalBudget = $budget;
-
-                    $purpose = 'gaming';
-
-                    //sets the performance range based on budget
-                    $performance = '';
-                    if($budget <= 10000){
-                        $performance = 'low';
-
-                        $budget = $budget - 449;
-                    }
-                    else if($budget > 10000 && $budget < 16000){
-                        $performance = 'mid';
-                        $budget = $budget - 549;
-                    }
-                    else if($budget >= 16000){ //45389
-                        $performance = 'high';
-                        $budget = $budget - 1688;
-                    }
-
-                    //dont forget to take away money for a case (pre set standard case set by us)
-
-                    //percentage of budgets depend on what performance the computer is. Different priorities.
-                    if($performance == 'low'){ //total: 100%
-
-                        $cpuBudget = $budget * 0.355; //35,5%
-                        $gpuBudget = $budget * 0.206; //20,6%
-                        $moboBudget = $budget * 0.143; //14,3%
-                        $psuBudget = $budget * 0.162; //16,2%
-                        $RAMBudget = $budget * 0.074; //7,4%
-                        $storageBudget = $budget * 0.06; //6%
-
-                    }
-                    else if($performance == 'mid'){ //total: 94,6%
-
-                        $cpuBudget = $budget * 0.281; //28,1%
-                        $gpuBudget = $budget * 0.304; //30,4%
-                        $moboBudget = $budget * 0.12; //12%
-                        $psuBudget = $budget * 0.137; //13,7%
-                        $RAMBudget = $budget * 0.05; //5%
-                        $storageBudget = $budget * 0.054; //5,4%
-
-                    }
-                    else if($performance == 'high'){ //total: 100%
-
-                        $cpuBudget = $budget * 0.20; //20%
-                        $gpuBudget = $budget * 0.35; //35%
-                        $moboBudget = $budget * 0.14; //14%
-                        $psuBudget = $budget * 0.14; //14%
-                        $RAMBudget = $budget * 0.075; //7,5%
-                        $storageBudget = $budget * 0.095; //9,5%
-
-                    }
-                    else{
-                        echo "ERROR with setting budget for each part!";
-                    }
-
-                    echo "
-                    <div class='alert alert-success text-center' role='alert'>
-                        <h2>Your current budget is: ".$totalBudget." kr</h2>".
-                    "</div>";
-
-                    echo "
-                        <div class='row py-3 mx-auto' style='width: 75rem;' id='resultano'>
-                    ";
-
-                    //Case
-                    getCase($performance);
-
-                    //CPU
-                    $cpuSocket = getCPU($conn, $cpuBudget, $purpose, $performance);
-
-                    //GPU
-                    getGPU($conn, $gpuBudget, $purpose, $performance);
-
-                    //mobo
-                    getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket);
-
-                    //Storage
-                    getStorage($conn, $storageBudget, $purpose, $performance);
-
-                    //PSU
-                    getPSU($conn, $psuBudget, $purpose, $performance);
-
-                    //RAM
-                    getRAM($conn, $RAMBudget, $purpose, $performance);
-
-                    echo "
-                        </div>
-                    ";
                 }
                 else{
-                    //minimum 7700 - FIX FFS
-
-                    echo "<script> 
-                            document.getElementById('divAlertMinimum').innerHTML += '<div class='alert alert-warning text-center' role='alert'> Please put in a budget over 7700kr </div>'; 
-                        </script>"
-                    ;
-                    echo "<div class='alert alert-warning text-center' role='alert'> Please put in a budget over 7700kr </div>";
+                    //max 46000
+                    echo "<div class='alert alert-warning text-center' role='alert'> Please put in a budget under 46000kr </div>";
                 }
             }
 
@@ -262,7 +289,7 @@
                     $name = "NZXT H710 Vit";
                     $extraInfo = "Middle Tower. ATX, mITX, mATX. Fans: 3x 120mm front, 1x 140mm back. Tempered Glass";
                 }
-
+                $GLOBALS["total"] += $caseCost;
                 echo "
                     <div class='col-sm mt-3'>
                         <div class='card shadow' style='width: 20rem; height: 15rem;'>
@@ -280,7 +307,7 @@
                 ";
             }
 
-            function getCPU($conn, $cpuBudget, $purpose, $performance){
+            function getCPU($conn, $cpuBudget, $purpose, $performance, $range){
 
                 //hämtar från databasen
                 if($performance == 'low'){
@@ -301,7 +328,7 @@
                 if (mysqli_num_rows($result) > 0) {
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $cpuBudget){
+                        if($row["price"] <= $cpuBudget && $row["price"] > $cpuBudget*$range){
                             $fittingAmount++;           
                         }
                     }
@@ -333,7 +360,7 @@
                     $i = 0;
         
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $cpuBudget){
+                        if($row["price"] <= $cpuBudget && $row["price"] > $cpuBudget*$range){
                             $i++;
                             if($i == $rand){
                                 echo "
@@ -349,6 +376,7 @@
                                         </div>
                                     </div>
                                 ";
+                                $GLOBALS["total"] += $row["price"];
                                 return $row['socket'];
                             }
                         }
@@ -360,7 +388,7 @@
                 }
             }
         
-            function getGPU($conn, $gpuBudget, $purpose, $performance){
+            function getGPU($conn, $gpuBudget, $purpose, $performance, $range){
         
                 //hämtar från databasen
                 if($performance == 'low'){
@@ -384,7 +412,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
         
-                        if($row["price"] <= $gpuBudget){
+                        if($row["price"] <= $gpuBudget && $row["price"] > $gpuBudget*$range){
                             $fittingAmount++;           
                         }
                         else{
@@ -419,7 +447,7 @@
                     $i = 0;
         
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $gpuBudget){
+                        if($row["price"] <= $gpuBudget && $row["price"] > $gpuBudget*$range){
                             $i++;
                             if($i == $rand){
 
@@ -436,6 +464,7 @@
                                         </div>
                                     </div>
                                 ";
+                                $GLOBALS["total"] += $row["price"];
                             }
                         }
                     }
@@ -446,7 +475,7 @@
                 echo "<br><hr><br>";
             }
         
-            function getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket){
+            function getMOBO($conn, $moboBudget, $purpose, $performance, $cpuSocket, $range){
 
                 //hämtar från databasen
                 if($performance == 'low'){
@@ -470,7 +499,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
         
-                        if($row["price"] <= $moboBudget){
+                        if($row["price"] <= $moboBudget && $row["price"] > $moboBudget*$range){
                             $fittingAmount++;           
                         }
                     }
@@ -504,7 +533,7 @@
                     $i = 0;
         
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $moboBudget){
+                        if($row["price"] <= $moboBudget && $row["price"] > $moboBudget*$range){
                             $i++;
                             if($i == $rand){
 
@@ -521,6 +550,7 @@
                                         </div>
                                     </div>
                                 ";
+                                $GLOBALS["total"] += $row["price"];
                             }
                         }
                     }
@@ -531,18 +561,18 @@
                 echo "<br><hr><br>";
             }
         
-            function getStorage($conn, $storageBudget, $purpose, $performance){
+            function getStorage($conn, $storageBudget, $purpose, $performance, $range){
                 //hämtar från databasen
                 if($performance == 'low'){
                     $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '250' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if ($performance == 'mid'){
-                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size <= '500'";
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '500'";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if($performance == 'high'){
-                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size BETWEEN '499' AND '1001' ";
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '1000' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else{
@@ -554,7 +584,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
         
-                        if($row["price"] <= $storageBudget){
+                        if($row["price"] <= $storageBudget && $row["price"] > $storageBudget*$range){
                             $fittingAmount++;           
                         }
                     }
@@ -570,11 +600,11 @@
                     $result = mysqli_query($conn, $sql);
                 }
                 else if ($performance == 'mid'){
-                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size <= '500'";
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '500' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else if($performance == 'high'){
-                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size BETWEEN '499' AND '1001' ";
+                    $sql = "SELECT name, form_factor, size, price, link FROM Storage WHERE size = '1000' ";
                     $result = mysqli_query($conn, $sql);
                 }
                 else{
@@ -588,7 +618,7 @@
                     $i = 0;
         
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $storageBudget){
+                        if($row["price"] <= $storageBudget && $row["price"] > $storageBudget*$range){
                             $i++;
                             if($i == $rand){
 
@@ -605,6 +635,7 @@
                                         </div>
                                     </div>
                                 ";
+                                $GLOBALS["total"] += $row["price"];
                             }
                         }
                     }
@@ -615,7 +646,7 @@
                 echo "<br><hr><br>";
             }
         
-            function getPSU($conn, $psuBudget, $purpose, $performance){
+            function getPSU($conn, $psuBudget, $purpose, $performance, $range){
                 //hämtar från databasen
                 if($performance == 'low'){
                     $sql = "SELECT name, watt, 80plus, modular, price, link FROM PSU WHERE watt <= '550' ";
@@ -638,7 +669,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
         
-                        if($row["price"] <= $psuBudget){
+                        if($row["price"] <= $psuBudget && $row["price"] > $psuBudget*$range){
                             $fittingAmount++;           
                         }
                     }
@@ -672,7 +703,7 @@
                     $i = 0;
         
                     while($row = mysqli_fetch_assoc($result)) {
-                        if($row["price"] <= $psuBudget){
+                        if($row["price"] <= $psuBudget && $row["price"] > $psuBudget*$range){
                             $i++;
                             if($i == $rand){
 
@@ -689,6 +720,7 @@
                                         </div>
                                     </div>
                                 ";
+                                $GLOBALS["total"] += $row["price"];
                             }
                         }
                     }
@@ -720,19 +752,22 @@
                 if (mysqli_num_rows($result) > 0) {
         
                     while($row = mysqli_fetch_assoc($result)) {
-                            echo "
-                                <div class='col-sm mt-3'>
-                                    <div class='card shadow' style='width: 20rem; height: 15rem;'>
-                                        <div class='card-header'>RAM: </div>
-                                        <div class='card-body'>
-                                            <a href='".$row['link']."'>
-                                                <h2>".$row['name']. " " .$row['size'].'GB'."</h2>
-                                            </a>
-                                            <h5>". $row['price']. "kr</h5>
-                                        </div>
+
+                        $stick = $row['size'] / 2;
+                        echo "
+                            <div class='col-sm mt-3'>
+                                <div class='card shadow' style='width: 20rem; height: 15rem;'>
+                                    <div class='card-header'>RAM: </div>
+                                    <div class='card-body'>
+                                        <a href='".$row['link']."'>
+                                            <h2>".$row['name']. " 2x".$stick.' '.$row['size'].'GB'."</h2>
+                                        </a>
+                                        <h5>". $row['price']. "kr</h5>
                                     </div>
                                 </div>
-                            ";
+                            </div>
+                        ";
+                        $GLOBALS["total"] += $row["price"];
                     }
                 } 
                 else {
@@ -744,8 +779,8 @@
 
     </div>
     <!--footer -->
-    <div class="text-center bg-dark text-white">
-        <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev | 2020 </p>
+    <div class="text-center bg-dark text-white" style="position: fixed; bottom: 0; width: 100vw;">
+        <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev</p>
     </div>
 
     <script src="../js/jquery-3.5.1.min.js"></script>
