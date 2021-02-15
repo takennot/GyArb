@@ -8,7 +8,7 @@
 
     <title>getComputer</title>
 </head>
-<body  class="bg-light">
+<body class="bg-light">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
@@ -779,7 +779,7 @@
 
     </div>
     <!--footer -->
-    <div class="text-center bg-dark text-white" style="position: fixed; bottom: 0; width: 100vw;">
+    <div class="text-center bg-dark text-white" style="bottom: 0; width: 100vw;">
         <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev</p>
     </div>
 
