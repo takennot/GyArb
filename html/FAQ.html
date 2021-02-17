@@ -2,270 +2,138 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
-	<title>Articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
+    	<link rel="icon" type="image/png" href="https://takennot.github.io/android-chrome-192x192.png" sizes="192x192">
+	<title>FAQ</title>
 </head>
 <body class="bg-light">
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" id="navbar">
-		<a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <a class="navbar-brand" href="../index.html">Computer-Part Picker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      	<li class="nav-item dropdown">
-		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Articles </a> <!-- FIX THIS FUCKING DROPDWN -->
-		        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          		<a class="dropdown-item" href="../index.html"> Home </a>
-		          		<a class="dropdown-item" href="articles.html"> Articles </a>
-		          		<a class="dropdown-item" href="FAQ.html"> FAQ </a>
-		          		<div class="dropdown-divider"></div>
-		          		<a class="dropdown-item" href="aboutContact.html"> Contact/About us </a>
-		        	</div>
-		      	</li>
-		      	<a href="../html/getcomputer.php"><button class="btn btn-outline-primary py-2" type="button">Get computer</button></a>
-		      	<li class="nav-item">
-        			<a class="nav-link" href="../html/aboutContact.html">About</a>
-      			</li>
-      			<li class="nav-item mt-2 ml-2">
-      				<div class="custom-control custom-switch d-flex">
-	    	 			<input type="checkbox" class="custom-control-input" id="darkSwitch"/>
-	    	 			<label class="custom-control-label text-light" for="darkSwitch">Dark Mode</label>
-	    			</div>
-	    		</li>
-		    </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a href="../html/getcomputer.php">
+		        <button class="btn btn-outline-primary py-2" type="button">Get computer</button>
+		    </a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown ml-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> FAQ </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../index.html"> Home </a>
+                        <a class="dropdown-item" href="articles.html"> Articles </a>
+                        <a class="dropdown-item" href="FAQ.html"> FAQ </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="aboutContact.html"> Contact/About us </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- mainpage -->
+    <div class="container-fluid bg-light pb-5">
+    	<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+			    <h1 class="display-3">FAQ</h1>
+			    <p class="lead">Frequently Asked Questions</p>
+
+			</div>
 		</div>
-	</nav>
-	
-	<div class="container-fluid">
-		<div class="dropdown">
-  			<a class="btn btn-primary dropdown-toggle mt-1" href="#" role="button" id="droppingArticle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 4rem; margin-left: -1.2vw;"></a>
-  			<div class="dropdown-menu" aria-labelledby="droppingArticle">
-  				<a class="dropdown-item" href="#navbar">To the top</a>
-  				<hr class="my-1">
-    			<a class="dropdown-item" href="#cpu">CPU</a>
-    			<a class="dropdown-item" href="#cpucool">CPU Cooling</a>
-    			<a class="dropdown-item" href="#gpu">GPU</a>
-    			<a class="dropdown-item" href="#mobo">Motherboard</a>
-    			<a class="dropdown-item" href="#ram">RAM</a>
-    			<a class="dropdown-item" href="#ssd">SSD</a>
-    			<a class="dropdown-item" href="#case">Case</a>
-    			<a class="dropdown-item" href="#psu">PSU</a>
-    			<hr class="my-1">
-    			<a class="dropdown-item" href="#sources">Sources</a>
-  			</div>
-		</div>
+		<div class="container">
+  			<div class="row">
+  				<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">Why won't the computer start?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
 
-		<h1 class="text-center pt-3" id="cpu">CPU</h1>
-		<p class="mx-auto text-justify w-50 mb-5">
-		The central processing unit, widely known as CPU, is one of the core components of a computer. People often compare it to “the brain” of a computer, which is responsible for processing and executing instructions. The CPU consists of billions of microscopic transistors, which are allowing the CPU to run the calculations it needs to run a program. The process of calculating can be described like this: the CPU is fetching the instructions from RAM (Random Access Memory), then it is decoding what the instructions are, and finally, it executes them. 
-		<br>
-		<br>
-		CPUs follow Moore’s law. Simply put, it is an observation that states that the number of transistors on a chip will be doubled every two years. CPUs have cores inside them that perform instructions and usually, most of the CPUs today have 2 or more cores, which speed is measured in Hertz (Hz). However, due to progress that has been made -  it is usually measured in Gigahertz (GHz), which is how many instructions per second the CPU can handle. 
-		</p>
+							<h5 class="my-1">The whole computer or a specific part or component doesn't turn on: </h5>
+							<small class="text-dark">Nothing turns on or the PC is not responding/reacting, some of the parts are getting power and showing activity, while the other ones are being completely powerless (for example some fans are spinning and some aren't), or a component is not turning on (for example, if provided lights on a component are not shining, "beeping" occurs but there is no image on the display, etc.</small>
+						    <ol class="ml-3">
+						    	<li>The computer/certain part/component is probably not getting power. Check if the PSU switch is on, or any problems with the outlet.</li>
+						    	<li>Check if every cable is connected and seated properly. A certain cable or part could also be damaged.</li>
+						    	<li>There could be a software problem, where it is installed incorectly or the BIOS is not supported/updated.</li>
+						    </ol>
+						</li>
+					</ul>
+				</div>
+    			<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">How should I proceed if my hands/fingers are too big to reach/grab/handle a part of the computer in the process of building it?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+						    <p class="mb-1">Use tools that will allow you to manage that part, such as tweezers. Alternatively, you could ask for a help from someone with smaller fingers.</p>
+						    <a href="getcomputer.php">
+						    	<small class="text-dark">addition idk</small>
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">What to do if my PC is not starting?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+						    <p class="mb-1">One of the reasons why your PC is not starting might be the RAM stick(s). Check if it/they are seated properly and try to push them fully if they aren't.</p>
+						</li>
+					</ul>
+				</div>
 
-		<hr>
-
-		<h1 class="text-center pt-3" id="cpucool">CPU Cooler</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		When the CPU is working, it produces heat and therefore needs to be cooled down to avoid overheating. If the CPU overheats, it might not work properly, so it is recommended to keep CPU temperature below 90-80°C. 
-		<br>
-		<br>
-		There are two types of cooling systems that are commonly used today - air and water cooling. A simple air cooling system can consist of three parts: a radiator, a fan, and a thermal paste. The radiator absorbs the heat generated by the CPU and then gets cooled down by the fan. However, the process of transferring heat from the CPU to the radiator is not effective due to the uneven CPU lids and radiator bottom parts. Because of that, thermal paste is applied to the lid of the CPU to make it even and transfer heat more efficiently. Although, the paste gets dry after a while so it needs to be changed and reapplied after some amount of time.
-		<br>
-		<br>
-		A simple water cooling consists of almost the same parts as air cooling: a radiator, water, a  fan, thermal paste, and a pump. The water absorbs heat from the CPU and then with the help of the pump it flows to the radiators. After that, water gets cooled down by fans that are mounted onto the radiator. Thermal paste is used for the same reason as in air cooling.
-		</p>
-
-		<hr>
-
-		<h1 class="text-center pt-3" id="gpu">GPU</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		The graphical processing unit, commonly referred to as GPU or a graphics card, is used mainly to process and render “heavy” tasks such as 3D animations or videos, so the CPU does not have to. The CPU and GPU may seem similar, but there is a big difference in their cores. If a CPU has a few cores that are focused on sequential serial processing, then GPU has thousands of smaller cores that are designed for multitasking.
-		<br>
-		<br>
-		It is necessary to have a powerful GPU in case you want a fast and smooth rendering of 3D animations or videos because the more powerful a GPU is, the faster and smoother renderings are. However, considering that CPUs still can handle rendering basic objects, there is no need to get a very powerful GPU if you are not planning to render heavy objects. 
-		<br>
-		<br>
-		A lot of GPUs are constructed variously from each other because a lot of different companies make them. At the moment, the biggest GPU manufacturers are Intel, Nvidia, and AMD. According to Jon Peddie Research, as of the second quarter of 2020, Intel has 64% of the GPU market share, Nvidia has 19% and AMD has 18%. However, in the discrete GPU market share, the situation is quite the opposite - Nvidia has 80% of the market share and AMD has 20% of the market share. The reason why Intel has 0% of the market share is that they simply do not manufacture discrete graphics cards. However, Intel is developing their dGPU (discrete GPU) but did not say anything about the release date. All of those three GPU manufacturers produce different versions of their chips depending on the target market. 
-		</p>
-
-		<hr>
-
-		<h1 class="text-center pt-3" id="mobo">Motherboard</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		The motherboard is what allocates and routes power for all the computer parts. To understand better what a motherboard is, we could use an example from DigitalTrends: Imagine that a computer is a body, then the CPU is the brain and the motherboard is the heart, which routs the power to different parts. Every motherboard is designed to work with specific processors and RAM, so they will not work with any CPU and RAM. Other parts, such as HDDs are more versatile, they will work with most of the motherboards. 
-		<br>
-		<br>
-		Motherboards have different standards that are designed to fit different sizes and types of computer cases. The most popular ones are ATX, mATX, and mini-ITX, where the ATX is the biggest one of them. There is no set standard for the number of ports, connections, and expansion card slots for these form factors. The motherboard is connected to the computer case through a set of standouts (to prevent a short circuit). 
-		<br>
-		<br>
-		Motherboards for laptops, tablets, or smartphones are often referred to as “logic boards”. They are very similar and they even work in the same way. The only difference is that some of the parts, such as CPU or RAM, are soldered into the logic board due to the size requirements. 
-		</p>
-
-		<hr>
-
-		<h1 class="text-center pt-3" id="ram">RAM</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		The random access memory commonly referred to as RAM, is an essential computer component, which may be installed as memory modules, such as DIMMs or SO-DIMMs. RAM, or memory, typically refers to DRAM (dynamic random access memory) or SDRAM (synchronous dynamic random access memory), where the term dynamic indicates that the memory must be constantly refreshed or it will lose its contents.
-		<br>
-		<br>
-		Like a CPU, the RAM also has different generations, but not at all as many, only 5. The most common type of RAM sold today is DDR4, generation 4, where DDR stands for “double-data-rate”, which allows multiple file transfers at the same time. SRAM, or “Static Random Access Memory” is more often used for system cache. It is called static because it does not need to be refreshed, unlike DRAM, which needs to be refreshed thousands of times each second. SRAM is, as a result, faster than DRAM but both are still volatile, meaning that both lose their contents when the power is turned off. VRAM, or “video RAM” is the RAM for the graphics card, GPU.
-		<br>
-		<br>
-		The amount of (GB) RAM determines how much gigabytes of memory the operating system and open applications can use. Devices with enough RAM can run several programs simultaneously without any slowdown, meanwhile, if a device uses close to 100% of its available RAM, it can cause a noticeable slowdown in performance because the memory must be swapped between applications. Therefore, the best way of improving performance is by adding, or buying a device with more RAM. 
-		<br>
-		<br>
-		Compared to storage capacity, which refers to how much disk space there is on a device, the RAM or System memory is a temporary memory. It is considered a “volatile” memory since it can only store data while the device is turned on. When the device is turned off, the Ram is erased and later can load new fresh data when being turned on again.
-		<br>
-		<br>
-		Just like a CPU, RAM has clock speed, which controls how much data per second it can handle. RAM speed is measured in MHz and its bandwidth is measured in MB/s. 
-		</p>
-
-		<hr>
-
-		<h1 class="text-center pt-3" id="ssd">Storage</h1>
-		<h2 class="text-center">SSD</h2>
-		<p class="mx-auto text-justify w-50 mb-5">
-		SSD, which stands for solid-state drive, is the newer generation of computer storage. They are created to replace traditional HDDs which are using mechanical parts, meanwhile, SSDs are using flash-based memory which is much faster. SSDs speed up computers significantly because of their fast throughputs and low read access times. Solid-state drives use a single simple memory chip that is not moving (unlike HDD) and have very fast access times.
-		<br>
-		<br>
-		Many people today choose SSD over HDD, because of SSD’s lower failure rate and potentially longer life span. However, HDDs are still used by the majority of people. SSDs are built differently than HDDs and are available in a diversity of different sizes and form-factors, however, they are a lot more expensive to manufacture than HDDs. 
-		<br>
-		<br>
-		SSDs are available in a variety of storage capacities, beginning from 128GB (gigabyte) ending near at 5TB (terabyte). Common SSD interfaces are PCIe, NVMe, and SATA III. PCIe is usually used for graphics or network cards. It gives higher bandwidth and low latency. NVMe gives higher IOPS (Input Output Per Second) and low latency. SATA III is an older interface that was designed specifically for storage. It is much slower than NVMe or PCIe interfaces, but still faster than HDDs. M.2 is the smallest of the SSD form-factors. They can have either SATA, either NVMe interfaces, so the speed can vary between them. M.2 are extremely small in terms of physical size, making them a good choice for computers with limited space inside of the case.	
-		</p>
-
-		<h2 class="text-center">HDD</h2>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		HDDs, or “Hard Disk Drives”, are non-volatile, meaning they do not need electrical power to maintain their data. They are attached directly to the disk controller of the computer's motherboard, housed inside of an air-sealed casing. All information stored on a traditional hard drive is done magnetically using a couple of spinning platters, or magnetic discs, which record individual bits as ones and zeroes.
-		<br>
-		<br>
-		To be able to read and write data, the HDD consists of two magnetic heads located at the end of a tapered metal component called an actuator arm, which moves rapidly over the discs as they spin. Data is recorded using the write head, which writes bits onto the disk, and data is read digitally from the disc by the read head. Since all of these pieces are “mechanical,” the hard disk is the slowest component of any computer – and the most fragile. 
-		<br>
-		<br>
-		Internal hard disks reside in a drive bay connected to the motherboard using an ATA, SCSI, or SATA cable. They are powered by a connection to the computer's PSU (power supply unit). Although most hard drives are internal, there are also stand-alone devices called external hard drives or portable hard drives that backup data on computers and expand the available space. External drives are often stored in an enclosure, a series of platters covered by a ferromagnetic coating, that helps protect the drive and allows it to interface with the computer, usually over USB.
-		<br>
-		<br>
-		HDDs are much slower than SSDs when it comes to writing and reading data. However, they do provide bigger storage and price per storage, which is why it might still be installed as the computer's secondary storage. One of the popular ways to use storage on a computer is to buy an SSD for the operating system and some software that needs writing and reading speed. Meanwhile, HDD might contain other files such as video, audio, or documents with downloads. 
-		<br>
-		<br>
-		There are many shapes and sizes HDDs come in, but 3.5-inch models are most common in desktop computers, and 2.5-inch models are usually found in laptops. A typical consumer HDD has a rotational speed of 7200 RPM (rotations per minute), but some high-end hard disk drives run as fast as 15,000 RPM. Laptop HDDs typically run at either 4800 or 5400 RPM. Even at the fastest rotational speed, hard drives are still limited by the "seek time" of the drive head. SSDs have therefore become a popular high-performance alternative to HDDs in recent years because they do not have a drive head.
-		</p>
-		<hr>
-
-		<h1 class="text-center pt-3" id="case">Case</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		A computer case, also known as a chassis, is the enclosure that contains components that make up a desktop computer and helps protect and organize all the components. Without the case, each of the sensitive components in the computer would be vulnerable to external dangers as, for example, dust, children, animals, liquids, etc. Cases are also used for better cooling - it helps keep the air properly flowing through the components, which keeps everything cool and prevents overheating. One more reason to use cases is noise - many computers and components are generating noise from working, but having those components in a confined case reduces the noise. The internal size of a case is categorized in which motherboard form factors it supports. Most of the cases support smaller form-factors, for example, if a case does have support for an ATX motherboard, it usually has support for mATX and mini-ITX motherboards too. 
-		<br>
-		<br>
-		A case that is designed for an ATX motherboard and PSU may take a variety of external forms or appearances such as a tower or an All-In-One case. Full towers usually have a greater volume than most desktop cases with more room for expansion slots and drive bays.
-		<br>
-		<br>
-		Cases are typically categorized by the following terms, however, there are no exact measurements for these sizes:
-		<br>
-		<br>
-		HTPC - Home Theater Personal Computer. These kinds of cases have a horizontal design and a smaller size inside and outside of the case. 
-		<br>
-		<br>
-		SFF - Small Form Factor. These cases are more compact compared to usual ATX cases and designed for mini-ITX and mATX motherboards. 
-		<br>
-		<br>
-		Mini-Tower - Standard Vertical Tower. No specific size but smaller than mid-tower and full tower in terms of internal and external space.
-		<br>
-		<br>
-		Mid-Tower - Standard Vertical Tower. No specific size but bigger than mini-tower and smaller than the full tower in terms of internal and external sizes.
-		<br>
-		<br>
-		Full Tower - The biggest vertical tower type of the case. It offers the most amount of space for expansion slots and many drive bays. It also often supports E-ATX motherboards.
-		</p>
-		<hr>
-
-		<h1 class="text-center pt-3" id="psu">PSU</h1>	
-		<p class="mx-auto text-justify w-50 mb-5">
-		All computer units and components contained inside a computer case are powered by the power supply, otherwise called PSU. For example, the motherboard, RAM, CPU, hard drive, disc drives, and most video cards (if the computer has one), all draw power from the power supply. Other external devices and peripherals, such as the computer monitor or printer, have their own power source or draw power over the data cable. Although, the display of a laptop or an All-in-One computer, is powered by the computer's power supply just like the other components. While leading power to the different computer components, its main task is to convert the 110-115 or 220-230 volt AC (alternating current), which is the current received from the outlet, into a steady low-voltage DC (direct current). Power supplies are rated by the number of watts they generate. If the PSU did not convert the current, the AC would directly fry your PCs circuits. The PSU regulates the voltage to eliminate spikes and surges common in most electrical systems. Some of the PSU manufacturers include fuses that will blow if the surge is too great, to protect the rest of the equipment.
-		<br>
-		<br>
-		Power supplies are not 100% efficient because a part of the used electricity is converted to heat. An 80 Plus power supply has a scale of efficiency, going from 80 Plus and 80 Plus Bronze to Titanium.  ‘80 Plus’ means that power supplies in this range will always operate at 80% efficiency at a minimum. The heat is removed with the help of a fan on top of the PSU.
-		<br>
-		<br>
-		On the front of the power supply, which is not visible unless the computer is opened, you find several cables. These cables connect to the computer motherboard and other internal components. A power supply connects to the motherboard using an ATX style connector and may have one or more of the following cables to connect power to other devices.
-		</p>
-		<hr>
-		<div class="text-center mx-auto text-justify w-50 mb-5" id="sources">
-		<h1>Sources: </h1>
-		<ul>
-        	<li>Martindale, J. (n.d.). Jon Martindale | LinkedIn [LinkedIn Page]. LinkedIn. Retrieved 2020, Oct 18, from <a href="https://uk.linkedin.com/in/jon-martindale-17061240">https://uk.linkedin.com/in/jon-martindale-17061240</a></li>
-        	<li>The Balance Careers’ Editors (n.d.). Jon Martindale - The Balance. Retrieved 2020, Oct 18, from <a href="https://www.thebalancecareers.com/jon-martindale-4845468">https://www.thebalancecareers.com/jon-martindale-4845468</a>
-        	</li>
-        	<li>Martindale, J. (2020, April 14). What is a CPU?. Retrieved 2020, Oct 18, from <a href="https://www.digitaltrends.com/computing/what-is-a-cpu">https://www.digitaltrends.com/computing/what-is-a-cpu</a></li>
-        	<li>Christensson, P. (2014, July 11). CPU Definition. Retrieved 2020, Oct 18, from <a href="https://techterms.com/definition/cpu">https://techterms.com/definition/cpu</a></li>
-        	<li>Chistersson, P. (n.d.). Per Christersson | LinkedIn [LinkedIn Page]. LinkedIn. Retrieved 2020, Oct 18, from <a href="https://www.linkedin.com/in/per-christensson-7502361/">https://www.linkedin.com/in/per-christensson-7502361/</a></li>
-        	<li>Christersson, P. (2011, Aug 19). Who is the author of the definitions on TechTerms.com?. Retrieved 2020, Oct 18, from <a href="https://techterms.com/help/author">https://techterms.com/help/author</a></li>
-        	<li>Rotman, D. (2020, Feb 24). We’re not prepared for the end of Moore’s Law | MIT Technology Review.  Retrieved 2020, Oct 20, from <a href="https://www.technologyreview.com/2020/02/24/905789/were-not-prepared-for-the-end-of-moores-law/">https://www.technologyreview.com/2020/02/24/905789/were-not-prepared-for-the-end-of-moores-law/</a></li>
-        	<li>Shepherd, A. (2020, Oct 5). What is a GPU? | IT PRO. Retrieved 2020, Oct 20, from <a href="https://www.itpro.co.uk/hardware/30399/what-is-a-gpu">https://www.itpro.co.uk/hardware/30399/what-is-a-gpu</a></li>
-        	<li>Harding, S. (2018, Dec 13). What Is a GPU? A Basic Definition of Graphics Cards | Tom's Hardware. Retrieved 2020, Oct 20, from <a href="https://www.tomshardware.com/reviews/gpu-graphics-card-definition,5742.html">https://www.tomshardware.com/reviews/gpu-graphics-card-definition,5742.html</a></li>
-        	<li>PCMag Editors (n.d.). Definition of GPU | PCMag. Retrieved 2020, Oct 20, from <a href="https://www.pcmag.com/encyclopedia/term/gpu">https://www.pcmag.com/encyclopedia/term/gpu</a></li>
-        	<li>Christensson, P. (2016, November 25). GPU Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com/definition/gpu">https://techterms.com/definition/gpu</a></li>
-        	<li>Peddie, J. (2020, Aug 24). Pandemic distorts global GPU market results | Jon Peddie Research. Retrieved 2020, Oct 25, from <a href="https://www.jonpeddie.com/press-releases/pandemic-distorts-global-gpu-market-results">https://www.jonpeddie.com/press-releases/pandemic-distorts-global-gpu-market-results</a></li>
-        	<li>Peddie, J. (n.d.). Jon Peddie Research | LinkedIn [LinkedIn Page]. LinkedIn. Retrieved 2020, Oct 25, from <a href="https://www.linkedin.com/company/jon-peddie-research">https://www.linkedin.com/company/jon-peddie-research</a></li>
-        	<li>Computer Hope Editors (2020, Aug 2). What is a Motherboard?. Retrieved 2020, Oct 20, from <a href="https://www.computerhope.com/jargon/m/mothboar.htm">https://www.computerhope.com/jargon/m/mothboar.htm</a></li>
-        	<li>Lacoma, T. (2020, Oct 1). What is a Motherboard? | Digital Trends. Retrieved 2020, Oct 20, from <a href="https://www.digitaltrends.com/computing/what-is-a-motherboard/">https://www.digitaltrends.com/computing/what-is-a-motherboard/</a></li>
-        	<li>Lacoma, T. (n.d.). Tyler Lacoma | LinkedIn [LinkedIn Page]. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/tyler-lacoma-bb2b6126/">https://www.linkedin.com/in/tyler-lacoma-bb2b6126/</a></li>
-        	<li>Christensson, P. (2008, December 6). Motherboard Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com/definition/motherboard">https://techterms.com/definition/motherboard</a></li>
-        	<li>Christensson, P. (2019, June 21). RAM Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com/definition/ram">https://techterms.com/definition/ram</a></li>
-        	<li>Martindale, J. (2020, Sep 23). What Is RAM? Here’s Everything You Need to Know About It | Digital Trends. Retrieved 2020, Oct 20, from <a href="https://www.digitaltrends.com/computing/what-is-ram/">https://www.digitaltrends.com/computing/what-is-ram/</a></li>
-        	<li>Villinger, S. (2020, Sep 22). What is RAM? | Random Access Memory Definition | Avast. Retrieved 2020, Oct 20, from <a href="https://www.avast.com/c-what-is-ram-memory">https://www.avast.com/c-what-is-ram-memory</a></li>
-        	<li>Avast Blog Editors. (n.d.). Avast Blog | Sandro Villinger. Retrieved 2020, Oct 20, from <a href="https://blog.avast.com/author/sandro-villinger">https://blog.avast.com/author/sandro-villinger</a></li>
-        	<li>Hewlett Packard Enterprise Editors. (n.d.). Sandro Villinger | HPE. Retrieved 2020, Oct 20, from <a href="https://www.hpe.com/us/en/insights/contributors/sandro-villinger.html">https://www.hpe.com/us/en/insights/contributors/sandro-villinger.html</a></li>
-        	<li>Computer Hope Editors (2020, Jun 30). What is RAM (Random-Access Memory)?. Retrieved 2020, Oct 20, from <a href="https://www.computerhope.com/jargon/r/ram.htm">https://www.computerhope.com/jargon/r/ram.htm</a></li>
-        	<li>Beal, V. (n.d.). RAM Definition & Meaning | What is Random Access Memory?. Retrieved 2020, Oct 20, from <a href="https://www.webopedia.com/TERM/R/RAM.html">https://www.webopedia.com/TERM/R/RAM.html</a></li>
-        	<li>Beal, T. (n.d.). Vangie Beal | LinkedIn. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/vangiebeal/">https://www.linkedin.com/in/vangiebeal/</a></li>
-        	<li>Webopedia Editors (n.d.). Author - Vangie Beal’s Articles. Retrieved 2020, Oct 20, from <a href="https://www.webopedia.com/author/Vangie-Beal">https://www.webopedia.com/author/Vangie-Beal</a></li>
-        	<li>Villinger, S. (2020, Mar 16). What is an SSD? | Solid-State Drive Definition | Avast. Retrieved 2020, Oct 20, from <a href="https://www.avast.com/c-what-is-ssd">https://www.avast.com/c-what-is-ssd</a></li>
-        	<li>Santo Domingo, J. (2020, Sep 2). SSD vs. HDD: What’s the Difference?. Retrieved 2020, Oct 20, from <a href="https://uk.pcmag.com/ssd/8061/ssd-vs-hdd-whats-the-difference">https://uk.pcmag.com/ssd/8061/ssd-vs-hdd-whats-the-difference</a></li>
-        	<li>Santo Domingo, J. (n.d.). Joel Santo Domingo | LinkedIn. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/joelsd/">https://www.linkedin.com/in/joelsd/</a></li>
-        	<li>Wirecutter Editors (n.d.). Joel Santo Domingo | Wirecutter. Retrieved 2020, Oct 20, from <a href="https://www.nytimes.com/wirecutter/authors/joel-santo-domingo/">https://www.nytimes.com/wirecutter/authors/joel-santo-domingo/</a></li>
-        	<li>PCMag Editors (n.d.). Joel Santo Domingo Bio and Latest News, Articles and Reviews | PCMag. Retrieved 2020, Oct 20, from <a href="https://www.pcmag.com/authors/joel-santo-domingo">https://www.pcmag.com/authors/joel-santo-domingo</a></li>
-        	<li>Crucial Editors (n.d.). SSD vs HDD: Which is Better for you? | Crucial.com. Retrieved 2020, Oct 20, from <a href="https://www.crucial.com/articles/about-ssd/ssd-vs-hdd">https://www.crucial.com/articles/about-ssd/ssd-vs-hdd</a></li>
-        	<li>Martindale, J. (2020, Sep 6). What is an SSD? | Digital Trends. Retrieved 2020, Oct 20, from <a href="https://www.digitaltrends.com/computing/what-is-an-ssd/">https://www.digitaltrends.com/computing/what-is-an-ssd/</a></li>
-        	<li>Intel Editors (n.d.). SSD vs HDD: Which Is Best for You? – Intel. Retrieved 2020, Oct 20, from <a href="https://www.intel.com/content/www/us/en/products/docs/memory-storage/solid-state-drives/ssd-vs-hdd.html">https://www.intel.com/content/www/us/en/products/docs/memory-storage/solid-state-drives/ssd-vs-hdd.html</a></li>
-        	<li>Christensson, P. (2011, January 13). SSD Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com/definition/ssd">https://techterms.com/definition/ssd</a></li>
-        	<li>Christensson, P. (2012, November 8). HDD Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com/definition/hdd">https://techterms.com/definition/hdd</a></li>
-        	<li>Computer Hope Editors (2020, Aug 2). What is a Hard Drive?. Retrieved 2020, Oct 20, from <a href="https://www.computerhope.com/jargon/h/harddriv.htm">https://www.computerhope.com/jargon/h/harddriv.htm</a></li>
-        	<li>Villinger, S. (2020, Mar 23). SSD vs. HDD: Which Do You Need? | Avast. Retrieved 2020, Oct 20, from <a href="https://www.avast.com/c-ssd-vs-hdd">https://www.avast.com/c-ssd-vs-hdd</a></li>
-        	<li>Lacoma, T. (2020, Sep 7). What Is a Hard Drive? A Beginner’s Guide to Computer Storage | Digital Trends. Retrieved 2020, Oct 20, from <a href="https://www.digitaltrends.com/computing/what-is-a-hard-drive-your-guide-to-computer-storage/">https://www.digitaltrends.com/computing/what-is-a-hard-drive-your-guide-to-computer-storage/</a></li>
-        	<li>computer case. (n.d.). Definitions.net. Retrieved 2020, Oct 20, from <a href="https://www.definitions.net/definition/computer+case">https://www.definitions.net/definition/computer+case</a></li>
-        	<li>Computer Hope Editors (2017, Dec 29). What is a Chassis?. Retrieved 2020, Oct 20, from <a href="https://www.computerhope.com/jargon/c/chassis.htm">https://www.computerhope.com/jargon/c/chassis.htm</a></li>
-        	<li>Harding, S. (2018, Dec 20). What Is a PC Chassis? A Basic Definition | Tom's Hardware. Retrieved 2020, Oct 20, from <a href="https://www.tomshardware.com/news/pc-chassis-definition,37651.html">https://www.tomshardware.com/news/pc-chassis-definition,37651.html</a></li>
-        	<li>Tom’s Hardware Editors (n.d.). Articles by: Scharon Harding | Tom's Hardware. Retrieved 2020, Oct 20, from <a href="https://www.tomshardware.com/author/scharon-harding">https://www.tomshardware.com/author/scharon-harding</a></li>
-        	<li>Harding, S. (n.d.). Scharon Harding | LinkedIn. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/scharon-harding-74338275/">https://www.linkedin.com/in/scharon-harding-74338275/</a></li>
-        	<li>Beal, V. (n.d.). What is Chassis? Webopedia Definition. Retrieved 2020, Oct 20, from <a href="https://www.webopedia.com/TERM/C/chassis.html">https://www.webopedia.com/TERM/C/chassis.html</a></li>
-        	<li>Computer Hope Editors (2019, Oct 7). What is Power Supply?. Retrieved 2020, Oct 20, from <a href="https://www.computerhope.com/jargon/p/power-supply.htm">https://www.computerhope.com/jargon/p/power-supply.htm</a></li>
-        	<li>Beal, V. (n.d.). Power Supply Definition &amp; Meaning | What is Power Supply?. Retrieved 2020, Oct 20, from <a href="https://www.webopedia.com/TERM/P/power_supply.html">https://www.webopedia.com/TERM/P/power_supply.html</a></li>
-        	<li>Christensson, P. (2009, January 28). Power Supply Definition. Retrieved 2020, Oct 20, from <a href="https://techterms.com">https://techterms.com</a></li>
-        	<li>Benyon, D. (2019, Oct 14). What is a Power Supply Unit (PSU)?. Retrieved 2020, Oct 20, form <a href="https://www.techbuyer.com/blog/What-is-a-Power-Supply-Unit-PSU">https://www.techbuyer.com/blog/What-is-a-Power-Supply-Unit-PSU</a></li>
-        	<li>Benyon, D. (n.d.). David Benyon | LinkedIn. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/david-benyon-60308862/">https://www.linkedin.com/in/david-benyon-60308862/</a></li>
-        	<li>Fisher, T. (2020, Apr 17). What is a PSU? What is an ATX Power Supply?. Retrieved 2020, Oct 20, from <a href="https://www.lifewire.com/power-supply-unit-2618158">https://www.lifewire.com/power-supply-unit-2618158</a></li>
-        	<li>Lifewire Editors (n.d.). Tim Fisher - Lifewire. Retrieved 2020, Oct 20, from <a href="https://www.lifewire.com/tim-fisher-2617714">https://www.lifewire.com/tim-fisher-2617714</a></li>
-        	<li>Fisher, T. (n.d.). Tim Fisher | LinkedIn. LinkedIn. Retrieved 2020, Oct 20, from <a href="https://www.linkedin.com/in/timfisherpro/">https://www.linkedin.com/in/timfisherpro/</a></li>
-        </ul>
+			</div>
+			<div class="row">
+			    <div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">My storage device (SSD/HDD) is not showing, what should I do?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+						    <p class="mb-1">Storage device isn't showing because either the cables are connected badly, or because it has been assigned with a wrong letter in the operative system. To show the storage device in the OS - check if cables are properly connected and then check which letter do they have in Disk Management</p>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="col-sm">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-primary">
+							<div class="d-flex w-100 justify-content-between">
+						      	<h5 class="mb-1">Some parts are not fitting inside the case, why?</h5>
+						    </div>
+						</li>
+						<li class="list-group-item list-group-item-white">
+						    <p class="mb-1">You probably didn't check the dimensions of the components before ordering them. Or you didn't check the dimensions inside the case. What you could do is to either get a refund and order a different component/case, either try to modify your case by removing some of it's parts (NOT recommended)</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>		
     </div>
-	</div>
-	<!--footer -->
+    <!--footer -->
 	<div class="text-center bg-dark text-white" style="bottom: 0; width: 100vw;">
         <p class="text-light py-3 m-0"> <a href="https://www.ntigymnasiet.se/sodertorn/" class="text-light" style="text-decoration:none">NTI Gymnasiet Södertörn</a> | Saga Liljenroth Dickman & Ruslan Musaev</p>
     </div>
 
 	<script src="../js/jquery-3.5.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/main.js"></script>
-	<script src="../js/dark-mode-switch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dark-mode-switch.min.js"></script>
 </body>
 </html>
